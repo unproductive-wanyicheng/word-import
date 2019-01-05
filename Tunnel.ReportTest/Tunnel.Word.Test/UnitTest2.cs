@@ -55,15 +55,17 @@ namespace Tunnel.Word.Test
         public void TestTunnelMonth()
         {
             TunnelMonthService monthService = new TunnelMonthService();
+            String time = DateTime.Now.ToString("yyyy年MM月dd日");
             monthService.SetCoverModel(new CoverModel()
             {
                 ReportNumber = "GJJCZX - BLGS - LYCZ - JKY - 001",
                 ProjectName = "云南保山至泸水高速公路老营特长隧道",
                 ContractSection = "      土建S1合同         ",
-                TunnelName = "  老营特长隧道（进口端）  ",
-                MonitoringRange1 = " 左幅（ZK1+558～ZK1+623） ",
-                MonitoringRange2 = " 右幅（K1+466～K1+556）   ",
-                MonitoringDateRange = "  2016.3.28～2016.4.28  "
+                TunnelName = "老营特长隧道右幅（进口端）",
+                MonitoringRange1 = "      K1+400～K1+460      ",
+                //MonitoringRange2 = " 右幅（K1+466～K1+556）   ",
+                //MonitoringDateRange = "  2016.3.28～2016.4.28  "
+                MonitoringDateRange = "    " + time + "      "
             });
 
             monthService.SetBodyModel(new BodyModel()

@@ -40,3 +40,9 @@ D:\CODE\隧道桌面端\代码参考\Tunnel.ReportTest\HtTool.Service\bin\Debug\
 D:\CODE\隧道桌面端\代码参考\Tunnel.ReportTest\HtTool.Service\obj\Debug\HtTool.Service.csprojResolveAssemblyReference.cache
 D:\CODE\隧道桌面端\代码参考\Tunnel.ReportTest\HtTool.Service\obj\Debug\HtTool.Service.dll
 D:\CODE\隧道桌面端\代码参考\Tunnel.ReportTest\HtTool.Service\obj\Debug\HtTool.Service.pdb
+C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\HtTool.Service\bin\Debug\HtTool.Service.dll
+C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\HtTool.Service\bin\Debug\HtTool.Service.pdb
+C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\HtTool.Service\bin\Debug\System.Linq.Dynamic.dll
+C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\HtTool.Service\obj\Debug\HtTool.Service.csprojResolveAssemblyReference.cache
+C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\HtTool.Service\obj\Debug\HtTool.Service.dll
+C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\HtTool.Service\obj\Debug\HtTool.Service.pdb

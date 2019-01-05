@@ -48,3 +48,14 @@ D:\CODE\隧道桌面端\代码参考\Tunnel.ReportTest\Tunnel.Word\bin\Debug\HtT
 D:\CODE\隧道桌面端\代码参考\Tunnel.ReportTest\Tunnel.Word\obj\Debug\Tunnel.Word.csprojResolveAssemblyReference.cache
 D:\CODE\隧道桌面端\代码参考\Tunnel.ReportTest\Tunnel.Word\obj\Debug\Tunnel.Word.dll
 D:\CODE\隧道桌面端\代码参考\Tunnel.ReportTest\Tunnel.Word\obj\Debug\Tunnel.Word.pdb
+C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\Tunnel.Word\bin\Debug\TunnelMonthFiles\log.png
+C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\Tunnel.Word\bin\Debug\TunnelMonthFiles\注意事项.docx
+C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\Tunnel.Word\bin\Debug\Tunnel.Word.dll
+C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\Tunnel.Word\bin\Debug\Tunnel.Word.pdb
+C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\Tunnel.Word\bin\Debug\HtTool.Service.dll
+C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\Tunnel.Word\bin\Debug\HtTool.Service.pdb
+C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\Tunnel.Word\obj\Debug\Tunnel.Word.csprojResolveAssemblyReference.cache
+C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\Tunnel.Word\obj\Debug\Tunnel.Word.dll
+C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\Tunnel.Word\obj\Debug\Tunnel.Word.pdb
+C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\Tunnel.Word\obj\Debug\Tunnel.Word.Properties.Resources.resources
+C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\Tunnel.Word\obj\Debug\Tunnel.Word.csproj.GenerateResource.Cache

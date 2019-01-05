@@ -29,7 +29,7 @@ namespace Tunnel.Word.BuildWord.Month
         public Document BuildWord()
         {
             _word = new WordManage();
-            _word.Open(GetSroce("Tunnel.Word.TunnelMonthFiles.封面.docx"));
+            _word.Open(GetSroce("Tunnel.Word.TunnelMonthFiles.初支封面.docx"));
 
             BuildCover();
             AddBodyAndSetData();
@@ -161,6 +161,7 @@ namespace Tunnel.Word.BuildWord.Month
 
         private Stream GetSroce(string url)
         {
+
             Assembly assm = Assembly.GetExecutingAssembly();
             return assm.GetManifestResourceStream(url);
         }
