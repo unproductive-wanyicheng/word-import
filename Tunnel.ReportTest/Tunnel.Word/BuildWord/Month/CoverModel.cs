@@ -30,7 +30,7 @@ namespace Tunnel.Word.BuildWord.Month
         /// P1_项目名称
         /// 云南保山至泸水高速公路老营特长隧道
         /// </summary>
-        [WordMark(MarkName = "P1_项目名称")]
+        [WordMark(MarkName = "P1_项目名称,P3_项目名称")]
         public string ProjectName { get; set; }
 
         /// <summary>

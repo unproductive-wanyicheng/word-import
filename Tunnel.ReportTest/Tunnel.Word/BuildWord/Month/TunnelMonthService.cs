@@ -74,7 +74,7 @@ namespace Tunnel.Word.BuildWord.Month
 
         private void AddBodyAndSetData()
         {
-            var jklcDocument = new Aspose.Words.Document(GetSroce("Tunnel.Word.TunnelMonthFiles.监控量测.docx"));
+            var jklcDocument = new Aspose.Words.Document(GetSroce("Tunnel.Word.TunnelMonthFiles.初支检测.docx"));
             var builder = new DocumentBuilder(jklcDocument);
             if (this._bodyModel!=null)
                 WordManage.SetModel(this._bodyModel, jklcDocument, builder);

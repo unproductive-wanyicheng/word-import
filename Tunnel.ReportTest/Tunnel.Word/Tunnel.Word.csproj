@@ -137,6 +137,7 @@
     <EmbeddedResource Include="TunnelMonthFiles\附件2.docx" />
     <EmbeddedResource Include="TunnelMonthFiles\进度表模型表.docx" />
     <EmbeddedResource Include="TunnelMonthFiles\埋设断面表.docx" />
+    <EmbeddedResource Include="TunnelMonthFiles\初支检测.docx" />
     <None Include="TunnelQualityFiles\隧道质量检测报表.docx" />
   </ItemGroup>
   <ItemGroup>

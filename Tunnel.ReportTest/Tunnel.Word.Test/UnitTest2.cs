@@ -70,10 +70,10 @@ namespace Tunnel.Word.Test
 
             monthService.SetBodyModel(new BodyModel()
             {
-                HeaderText = "云南保山至泸水高速公路老营特长隧道进口监控量测报告     报告编号：GJJCZX-BLGS-LYJKLC-JK-001",
-                TaskSource = "贵州省交通建设工程检测中心有限责任公司受保泸高速公路工程建设指挥部的委托，承担老营特长隧道进口施工期间的超前地质预报、质量检测及监控量测工作。按合同要求及时编写隧道施工期间监控量测阶段性报告。",
-                EngineeringSurvey = "保山至泸水高速公路地处云南省西北部，路线走向总为由东向西北方向布设。路线起于保山市隆阳区老营，经过隆阳区瓦房乡、怒江州泸水县上江乡，止于怒江州泸水县六库镇。\r\n老营特长隧道垂直横穿怒江山脉，位于构造侵蚀高中山山地地貌单元内，高差起伏大。该段内地层岩性主要为寒武系、奥陶系、志留系、泥盆系粉砂岩、砂岩、页岩为主。其为一座分离式隧道，左幅隧道起讫里程为ZK1+550～ZK12+980，长11430m，最大埋深约为1247m；右幅隧道起讫里程为K1+435～K12+955，长11520m，最大埋深约为1252m。",
-                ConstructionSituation = "监控量测工作起迄日期为（2016.08.28～2016.9.28），老营特长隧道左、右幅进口端施工情况见表1，隧道左幅进口端监测断面布设情况见表2；隧道右幅进口端监测断面布设情况见表3，隧道左、右幅选测项目监测断面布设情况见表4。",
+                HeaderText = "云南保山至泸水高速公路老营特长隧道初期支护检测报告     报告编号：GJJCZX -BLGS-LYCZ-JKY-002",
+                //TaskSource = "贵州省交通建设工程检测中心有限责任公司受保泸高速公路工程建设指挥部的委托，承担老营特长隧道进口施工期间的超前地质预报、质量检测及监控量测工作。按合同要求及时编写隧道施工期间监控量测阶段性报告。",
+                EngineeringSurvey = "云南保山至泸水高速公路地处云南省西北部，路线走向总为由东向西北方向布设。路线起于保山市隆阳区老营，经过隆阳区瓦房乡、怒江州泸水县上江乡，止于怒江州泸水县六库镇。\r\n老营特长隧道垂直横穿怒江山脉，位于构造侵蚀高中山山地地貌单元内，高差起伏大。该段内地层岩性主要为寒武系、奥陶系、志留系、泥盆系粉砂岩、砂岩、页岩、灰岩为主。其为一座分离式隧道，左幅隧道起讫里程为ZK1+550～ZK12+980，长11430m，最大埋深约为1247m；右幅隧道起讫里程为K1+435～K12+955，长11520m，最大埋深约为1252m。",
+                ConstructionSituation = "2016年04月21日，我公司运用地质雷达法对老营特长隧道右幅进口K1+484～K1+535段进行隧道初期支护施工质量检测。\r\n实际采集雷达数据357测线米，完成雷达检测工作量51延米，累计检测完成75m。",
                 ConstructionSituationList = Build113(),
                 MustMonitoringResults = new List<IListModel>()
                 {
@@ -184,7 +184,7 @@ namespace Tunnel.Word.Test
                 }
             });
 
-            string fileName = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "TunnelMonth.docx");
+            string fileName = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "TunnelMonth.doc");
             var odoc = monthService.BuildWord();
             odoc.Save(fileName, SaveFormat.Docx);
         }
