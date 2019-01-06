@@ -29,7 +29,7 @@ namespace Tunnel.Word.BuildWord.Month
         public Document BuildWord()
         {
             _word = new WordManage();
-            _word.Open(GetSroce("Tunnel.Word.TunnelMonthFiles.初支封面.docx"));
+            _word.Open(GetSroce("Tunnel.Word.ChuzhiJiance.初支封面.doc"));
 
             BuildCover();
             AddBodyAndSetData();
@@ -74,7 +74,8 @@ namespace Tunnel.Word.BuildWord.Month
 
         private void AddBodyAndSetData()
         {
-            var jklcDocument = new Aspose.Words.Document(GetSroce("Tunnel.Word.TunnelMonthFiles.初支检测.docx"));
+            var jklcDocument = new Aspose.Words.Document(GetSroce("Tunnel.Word.ChuzhiJiance.初支正文.doc"));
+            //var jklcDocument = new Aspose.Words.Document(GetSroce("Tunnel.Word.TunnelMonthFiles.监控量测.docx"));
             var builder = new DocumentBuilder(jklcDocument);
             if (this._bodyModel!=null)
                 WordManage.SetModel(this._bodyModel, jklcDocument, builder);
@@ -84,7 +85,6 @@ namespace Tunnel.Word.BuildWord.Month
             _word.Document.AppendDocument(jklcDocument, ImportFormatMode.KeepSourceFormatting);
 
             SetEnclosure();
-
             builder.MoveToHeaderFooter(HeaderFooterType.FooterPrimary);
             WordManage.BookMarkReplace(_word.Document, builder, "totalPage", _coverCount.ToString());
             

@@ -34,7 +34,7 @@ namespace Tunnel.Word.BuildWord.Month
         /// T0103_隧道施工情况及断面埋设
         /// ===========后期再统一处理==============
         /// </summary>
-        [WordMark(MarkName = "T0103_隧道施工情况及断面埋设")]
+        [WordMark(MarkName = "T0103_隧道检测情况")]
 
         public string ConstructionSituation { get; set; }
 
