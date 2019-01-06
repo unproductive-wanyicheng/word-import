@@ -72,7 +72,26 @@ namespace Tunnel.Word.BuildWord.Month
         [WordMark(MarkName = "T08_建议")]
 
         public string Proposal { get; set; }
-        
-        
+
+        /// <summary>
+        /// T0701_初支厚度结论
+        /// </summary>
+        [WordMark(MarkName = "T0701_初支厚度结论")]
+
+        public string ChuzhiChuzhiConclusion { get; set; }
+
+        /// <summary>
+        /// T0702_初支缺陷结论
+        /// </summary>
+        [WordMark(MarkName = "T0702_初支缺陷结论")]
+
+        public string ChuzhiQuexianConclusion { get; set; }
+
+        /// <summary>
+        /// T0703_初支钢支撑结论
+        /// </summary>
+        [WordMark(MarkName = "T0703_初支钢支撑结论")]
+
+        public string ChuzhiGangzhichengConclusion { get; set; }
     }
 }

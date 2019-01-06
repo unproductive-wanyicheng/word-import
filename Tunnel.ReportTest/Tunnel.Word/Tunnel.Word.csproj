@@ -125,6 +125,7 @@
     <EmbeddedResource Include="TunnelMonitorFiles\仪器设备统计表.docx" />
     <EmbeddedResource Include="ChuzhiJiance\初支封面.doc" />
     <EmbeddedResource Include="ChuzhiJiance\初支正文.doc" />
+    <EmbeddedResource Include="ChuzhiJiance\初支附件.doc" />
     <None Include="TunnelMonitorFiles\老营特长隧道进口端监控量测月报001期.doc" />
     <EmbeddedResource Include="TunnelMonitorFiles\进度表模型表.docx" />
     <EmbeddedResource Include="TunnelMonitorFiles\附件1.docx" />
