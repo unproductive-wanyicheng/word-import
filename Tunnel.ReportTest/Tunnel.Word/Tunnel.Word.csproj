@@ -88,6 +88,8 @@
     </Compile>
     <Compile Include="Table\BurialSituationModel.cs" />
     <Compile Include="Table\BuriedSectionModel.cs" />
+    <Compile Include="Table\ChuzhiParamsModel.cs" />
+    <Compile Include="Table\ChuzhiThicknessModel.cs" />
     <Compile Include="Table\DataAnalysisModel.cs" />
     <Compile Include="Table\EquipModel.cs" />
     <Compile Include="Table\ScheduleDataModel.cs" />
@@ -126,6 +128,8 @@
     <EmbeddedResource Include="ChuzhiJiance\初支封面.doc" />
     <EmbeddedResource Include="ChuzhiJiance\初支正文.doc" />
     <EmbeddedResource Include="ChuzhiJiance\初支附件.doc" />
+    <EmbeddedResource Include="ChuzhiJiance\初支检测参数表.doc" />
+    <EmbeddedResource Include="ChuzhiJiance\初支检测厚度表.doc" />
     <None Include="TunnelMonitorFiles\老营特长隧道进口端监控量测月报001期.doc" />
     <EmbeddedResource Include="TunnelMonitorFiles\进度表模型表.docx" />
     <EmbeddedResource Include="TunnelMonitorFiles\附件1.docx" />

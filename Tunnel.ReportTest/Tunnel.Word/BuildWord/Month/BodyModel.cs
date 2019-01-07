@@ -93,5 +93,37 @@ namespace Tunnel.Word.BuildWord.Month
         [WordMark(MarkName = "T0703_初支钢支撑结论")]
 
         public string ChuzhiGangzhichengConclusion { get; set; }
+
+        /// <summary>
+        /// T0401_初支参数表
+        /// 2019年1月7日
+        /// </summary>
+        
+        [WordMark(MarkName = "T0401_初支参数表1", MarkType = MarkType.BuildData)]
+        public List<IListModel> ChuzhiParamsTable1 { get; set; }
+
+        [WordMark(MarkName = "T0401_初支参数表", MarkType = MarkType.BuildData)]
+        public List<IListModel> ChuzhiParamsTable { get; set; }
+
+        /// <summary>
+        /// T0601_初支厚度表
+        /// 2019年1月7日
+        /// </summary>
+        [WordMark(MarkName = "T0601_初支厚度表", MarkType = MarkType.BuildData)]
+        public List<IListModel> ChuzhiThicknessTable { get; set; }
+
+        /// <summary>
+        /// T0604_初支缺陷检查表
+        /// 2019年1月7日
+        /// </summary>
+        [WordMark(MarkName = "T0604_初支缺陷检查表", MarkType = MarkType.BuildData)]
+        public List<IListModel> ChuzhisDefectTable { get; set; }
+
+        /// <summary>
+        /// T0605_初支钢支撑检查表
+        /// 2019年1月7日
+        /// </summary>
+        [WordMark(MarkName = "T0605_初支钢支撑检查表", MarkType = MarkType.BuildData)]
+        public List<IListModel> ChuzhisSteelTable { get; set; }
     }
 }

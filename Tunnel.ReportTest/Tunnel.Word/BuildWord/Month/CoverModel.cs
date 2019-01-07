@@ -87,5 +87,7 @@ namespace Tunnel.Word.BuildWord.Month
         /// </summary>
         [WordMark(MarkName = "P3_日期")]
         public string CreateDate { get; set; }
+
+        
     }
 }
