@@ -138,6 +138,7 @@ namespace Tunnel.Word.Test
                 {
                     new ChuzhiThicknessModel
                     {
+                        TableName = "表5 喷射混凝土厚度检测结果统计表",
                         ShotcreteThickness = "30",
                         MaxThickness = "45",
                         MinThickness = "15",

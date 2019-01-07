@@ -51,7 +51,7 @@ namespace Tunnel.Word.Table
 
         private Document BuildTable(ChuzhiThicknessModel model)
         {
-            var dc = new Aspose.Words.Document(GetSroce("Tunnel.Word.ChuzhiJiance.初支检测厚度表.docx"));
+            var dc = new Aspose.Words.Document(GetSroce("Tunnel.Word.ChuzhiJiance.初支检测厚度表.doc"));
             var builder = new DocumentBuilder(dc);
             WordManage.SetModel(model, dc, builder);
 
@@ -60,59 +60,254 @@ namespace Tunnel.Word.Table
             if (table == null) return new Document();
             int j = 1;
             List<RowMergeData> dic = new List<RowMergeData>();
-            foreach (var dataTypeModel in model.DataTypeModels)
+            // 初始化表格
+            if (model.ChuzhiThicknessDatas != null)
             {
-                if (dataTypeModel.DataList != null)
+                for(var i=0;i< model.ChuzhiThicknessDatas.Count+1;i++)
                 {
-                    for (int i = 0; i < dataTypeModel.DataList.Count; i++)
+                    var row = CreateRow(new[]
                     {
-
-                        SetRowData(dc, table.Rows[j], new[]
-                        {
-                            i == 0?dataTypeModel.Name:"",
-                            dataTypeModel.DataList[i].ConstructionProcess,
-                            dataTypeModel.DataList[i].StartDate,
-                            dataTypeModel.DataList[i].EndDate,
-                            dataTypeModel.DataList[i].StageFootage,
-                            dataTypeModel.DataList[i].AccumulativeFootage,
-                            i == 0?dataTypeModel.Remark:""
-                        });
-
-
-                        if (dataTypeModel.DataList.Count > 1 && i == dataTypeModel.DataList.Count - 1)
-                        {
-                            dic.Add(new RowMergeData { RowJ = j, RowCount = dataTypeModel.DataList.Count });
-                        }
-
-                        j++;
-                    }
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    }, dc);
+                    table.AppendChild(row);
                 }
             }
-            for (int i = dic.Count - 1; i >= 0; i--)
+            
+            // 设置属性
+            if (model.ChuzhiThicknessDatas != null)
             {
-                Cell cellStartRange = table.Rows[dic[i].RowJ - dic[i].RowCount + 1].Cells[0];
-                Cell cellEndRange = table.Rows[dic[i].RowJ].Cells[0];
-                MergeCells(cellStartRange, cellEndRange);
+                int L = model.ChuzhiThicknessDatas.Count;
+                for (int i = 0; i < L; i++)
+                {
+                    var cellData = model.ChuzhiThicknessDatas[i];
+                    SetRowData(dc, table.Rows[i+2], new[]
+                    {
+                        cellData.Index,
+                        cellData.ParamsMileage,
+                        i == 0 ? model.ShotcreteThickness : "",
+                        cellData.RealThicknessG,
+                        cellData.RealThicknessE,
+                        cellData.RealThicknessC,
+                        cellData.RealThicknessA,
+                        cellData.RealThicknessB,
+                        cellData.RealThicknessD,
+                        cellData.RealThicknessF,
+                        i == 0 ? model.MaxThickness : "",
+                        i == 0 ? model.MinThickness : "",
+                        i == 0 ? model.AverageThickness : "",
+                        i == 0 ? model.GoodPercent : "",
+                    });
+                }
+                SetRowData(dc, table.Rows[L+2], new[]
+                {
+                    model.BottomText,
+                    "",
+                    "",
+                    model.ChuzhiThicknessAveDatas[0].RealThicknessG,
+                    model.ChuzhiThicknessAveDatas[0].RealThicknessE,
+                    model.ChuzhiThicknessAveDatas[0].RealThicknessC,
+                    model.ChuzhiThicknessAveDatas[0].RealThicknessA,
+                    model.ChuzhiThicknessAveDatas[0].RealThicknessB,
+                    model.ChuzhiThicknessAveDatas[0].RealThicknessD,
+                    model.ChuzhiThicknessAveDatas[0].RealThicknessF,
+                    "",
+                    "",
+                    "",
+                    "",
+                });
+            }
+            Cell cellStartRange = table.Rows[2].Cells[2];
+            Cell cellEndRange = table.Rows[2].Cells[2];
+            Console.WriteLine(cellStartRange.GetText());
+            MergeCells(cellStartRange, cellEndRange);
+            //foreach (var dataTypeModel in model.DataTypeModels)
+            //{
+            //    if (dataTypeModel.DataList != null)
+            //    {
+            //        for (int i = 0; i < dataTypeModel.DataList.Count; i++)
+            //        {
 
-                Cell cellStartRange1 = table.Rows[dic[i].RowJ - dic[i].RowCount + 1].Cells[6];
-                Cell cellEndRange1 = table.Rows[dic[i].RowJ].Cells[6];
-                MergeCells(cellStartRange1, cellEndRange1);
-            }
+            //            SetRowData(dc, table.Rows[j], new[]
+            //            {
+            //                i == 0?dataTypeModel.Name:"",
+            //                dataTypeModel.DataList[i].ConstructionProcess,
+            //                dataTypeModel.DataList[i].StartDate,
+            //                dataTypeModel.DataList[i].EndDate,
+            //                dataTypeModel.DataList[i].StageFootage,
+            //                dataTypeModel.DataList[i].AccumulativeFootage,
+            //                i == 0?dataTypeModel.Remark:""
+            //            });
 
-            while (table.Rows.Count != j)
-            {
-                table.Rows.Remove(table.LastRow);
-            }
-            foreach (Row row in table.Rows)
-            {
-                row.Cells[0].FirstParagraph.ParagraphFormat.Alignment = ParagraphAlignment.Center;
-                row.Cells[1].FirstParagraph.ParagraphFormat.Alignment = ParagraphAlignment.Center;
-                row.Cells[2].FirstParagraph.ParagraphFormat.Alignment = ParagraphAlignment.Center;
-                row.Cells[3].FirstParagraph.ParagraphFormat.Alignment = ParagraphAlignment.Center;
-                row.Cells[4].FirstParagraph.ParagraphFormat.Alignment = ParagraphAlignment.Center;
-                row.Cells[5].FirstParagraph.ParagraphFormat.Alignment = ParagraphAlignment.Center;
-            }
-            table.SetBorder(BorderType.Bottom, LineStyle.Single, 1.5, Color.Black, true);
+
+            //            if (dataTypeModel.DataList.Count > 1 && i == dataTypeModel.DataList.Count - 1)
+            //            {
+            //                dic.Add(new RowMergeData { RowJ = j, RowCount = dataTypeModel.DataList.Count });
+            //            }
+
+            //            j++;
+            //        }
+            //    }
+            //}
+            //for (int i = dic.Count - 1; i >= 0; i--)
+            //{
+            //    Cell cellStartRange = table.Rows[dic[i].RowJ - dic[i].RowCount + 1].Cells[0];
+            //    Cell cellEndRange = table.Rows[dic[i].RowJ].Cells[0];
+            //    MergeCells(cellStartRange, cellEndRange);
+
+            //    Cell cellStartRange1 = table.Rows[dic[i].RowJ - dic[i].RowCount + 1].Cells[6];
+            //    Cell cellEndRange1 = table.Rows[dic[i].RowJ].Cells[6];
+            //    MergeCells(cellStartRange1, cellEndRange1);
+            //}
+
+            //while (table.Rows.Count != j)
+            //{
+            //    table.Rows.Remove(table.LastRow);
+            //}
+            //for (var i = 2; i < table.Rows.Count; i++)
+            //{
+            //    var row = table.Rows[i];
+            //    for (var k = 0; k < 14; k++)
+            //    {
+            //        string text = "";
+            //        if (k == 0 && i != table.Rows.Count - 1)
+            //        {
+            //            text = model.ChuzhiThicknessDatas[i - 2].Index;
+            //        }
+            //        if (k == 0 && i == table.Rows.Count - 1)
+            //        {
+            //            text = model.BottomText;
+            //        }
+            //        if (k == 1 && i != table.Rows.Count - 1)
+            //        {
+            //            text = model.ChuzhiThicknessDatas[i - 2].ParamsMileage;
+            //        }
+            //        if (k == 1 && i == table.Rows.Count - 1)
+            //        {
+            //            text = "";
+            //        }
+            //        if (k == 2 && i == 2)
+            //        {
+            //            text = model.ShotcreteThickness;
+            //        }
+            //        if (k == 2 && i != 2)
+            //        {
+            //            text = "";
+            //        }
+            //        if (k == 3 && i != table.Rows.Count - 1)
+            //        {
+            //            text = model.ChuzhiThicknessDatas[i - 2].RealThicknessG;
+            //        }
+            //        if (k == 3 && i == table.Rows.Count - 1)
+            //        {
+            //            text = model.ChuzhiThicknessAveDatas[0].RealThicknessG;
+            //        }
+            //        if (k == 4 && i != table.Rows.Count - 1)
+            //        {
+            //            text = model.ChuzhiThicknessDatas[i - 2].RealThicknessE;
+            //        }
+            //        if (k == 4 && i == table.Rows.Count - 1)
+            //        {
+            //            text = model.ChuzhiThicknessAveDatas[0].RealThicknessE;
+            //        }
+            //        if (k == 5 && i != table.Rows.Count - 1)
+            //        {
+            //            text = model.ChuzhiThicknessDatas[i - 2].RealThicknessC;
+            //        }
+            //        if (k == 5 && i == table.Rows.Count - 1)
+            //        {
+            //            text = model.ChuzhiThicknessAveDatas[0].RealThicknessC;
+            //        }
+            //        if (k == 6 && i != table.Rows.Count - 1)
+            //        {
+            //            text = model.ChuzhiThicknessDatas[i - 2].RealThicknessA;
+            //        }
+            //        if (k == 6 && i == table.Rows.Count - 1)
+            //        {
+            //            text = model.ChuzhiThicknessAveDatas[0].RealThicknessA;
+            //        }
+            //        if (k == 7 && i != table.Rows.Count - 1)
+            //        {
+            //            text = model.ChuzhiThicknessDatas[i - 2].RealThicknessB;
+            //        }
+            //        if (k == 7 && i == table.Rows.Count - 1)
+            //        {
+            //            text = model.ChuzhiThicknessAveDatas[0].RealThicknessB;
+            //        }
+            //        if (k == 8 && i != table.Rows.Count - 1)
+            //        {
+            //            text = model.ChuzhiThicknessDatas[i - 2].RealThicknessD;
+            //        }
+            //        if (k == 8 && i == table.Rows.Count - 1)
+            //        {
+            //            text = model.ChuzhiThicknessAveDatas[0].RealThicknessD;
+            //        }
+            //        if (k == 9 && i != table.Rows.Count - 1)
+            //        {
+            //            text = model.ChuzhiThicknessDatas[i - 2].RealThicknessF;
+            //        }
+            //        if (k == 9 && i == table.Rows.Count - 1)
+            //        {
+            //            text = model.ChuzhiThicknessAveDatas[0].RealThicknessF;
+            //        }
+            //        if (k == 10 && i != 2)
+            //        {
+            //            text = "";
+            //        }
+            //        if (k == 10 && i == 2)
+            //        {
+            //            text = model.MaxThickness;
+            //        }
+            //        if (k == 11 && i != 2)
+            //        {
+            //            text = "";
+            //        }
+            //        if (k == 11 && i == 2)
+            //        {
+            //            text = model.MinThickness;
+            //        }
+            //        if (k == 12 && i != 2)
+            //        {
+            //            text = "";
+            //        }
+            //        if (k == 12 && i == 2)
+            //        {
+            //            text = model.AverageThickness;
+            //        }
+            //        if (k == 13 && i != 2)
+            //        {
+            //            text = "";
+            //        }
+            //        if (k == 13 && i == 2)
+            //        {
+            //            text = model.GoodPercent;
+            //        }
+
+            //        builder.MoveToCell(0, i, k, 0);
+            //        Aspose.Words.Font font = builder.Font;
+            //        font.Size = 10;
+            //        builder.ParagraphFormat.LineSpacing = 10;
+            //        builder.Write(text);
+
+            //        row.Cells[k].FirstParagraph.ParagraphFormat.Alignment = ParagraphAlignment.Center;
+            //        row.Cells[k].CellFormat.VerticalAlignment = CellVerticalAlignment.Center;
+            //    }
+            //}
+            table.SetBorder(BorderType.Left, LineStyle.Single, 2, Color.Black, true);
+            table.SetBorder(BorderType.Right, LineStyle.Single, 2, Color.Black, true);
+            table.SetBorder(BorderType.Bottom, LineStyle.Single, 2, Color.Black, true);
             return dc;
         }
 
