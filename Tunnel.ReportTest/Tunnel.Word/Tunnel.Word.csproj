@@ -59,6 +59,7 @@
     <Compile Include="BuildWord\MonitorMonth\CoverModel.cs" />
     <Compile Include="BuildWord\MonitorMonth\EnclosureModel.cs" />
     <Compile Include="BuildWord\MonitorMonth\TunnelMonitorService.cs" />
+    <Compile Include="BuildWord\Month\ErchenService.cs" />
     <Compile Include="Enums\Enum.cs" />
     <Compile Include="Model\IModel.cs" />
     <Compile Include="IMonitoringResult.cs" />
@@ -94,6 +95,10 @@
     <Compile Include="Table\ChuzhiThicknessModel.cs" />
     <Compile Include="Table\DataAnalysisModel.cs" />
     <Compile Include="Table\EquipModel.cs" />
+    <Compile Include="Table\ErchenDefectModel.cs" />
+    <Compile Include="Table\ErchenParamsModel.cs" />
+    <Compile Include="Table\ErchenSpaceModel.cs" />
+    <Compile Include="Table\ErchenThicknessModel.cs" />
     <Compile Include="Table\ScheduleDataModel.cs" />
     <Compile Include="Table\TableBase.cs" />
     <Compile Include="Table\TableDataModel.cs" />
@@ -134,6 +139,12 @@
     <EmbeddedResource Include="ChuzhiJiance\初支缺陷检测表.doc" />
     <EmbeddedResource Include="ChuzhiJiance\初支钢支撑检测表.doc" />
     <EmbeddedResource Include="ChuzhiJiance\初支附件1.doc" />
+    <EmbeddedResource Include="ErchenFiles\二衬封面.doc" />
+    <EmbeddedResource Include="ErchenFiles\二衬厚度表.doc" />
+    <EmbeddedResource Include="ErchenFiles\二衬参数表.doc" />
+    <EmbeddedResource Include="ErchenFiles\二衬正文.doc" />
+    <EmbeddedResource Include="ErchenFiles\二衬缺陷表.doc" />
+    <EmbeddedResource Include="ErchenFiles\二衬间距表.doc" />
     <None Include="TunnelMonitorFiles\老营特长隧道进口端监控量测月报001期.doc" />
     <EmbeddedResource Include="TunnelMonitorFiles\进度表模型表.docx" />
     <EmbeddedResource Include="TunnelMonitorFiles\附件1.docx" />

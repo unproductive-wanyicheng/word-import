@@ -20,7 +20,7 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            UnitTest2 test = new UnitTest2();
+            UnitTest3 test = new UnitTest3();
             test.TestTunnelMonth();
         }
     }

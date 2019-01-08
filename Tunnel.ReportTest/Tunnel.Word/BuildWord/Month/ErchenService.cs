@@ -13,7 +13,7 @@ using Tunnel.Word.Model;
 
 namespace Tunnel.Word.BuildWord.Month
 {
-    public class TunnelMonthService : IBuildMonth
+    public class ErchenService : IBuildMonth
     {
         private WordManage _word;
         private readonly string _basePath;
@@ -21,7 +21,7 @@ namespace Tunnel.Word.BuildWord.Month
         private BodyModel _bodyModel;
         private List<EnclosureModel> _enclosureModels;
         private int _coverCount = 0;
-        public TunnelMonthService()
+        public ErchenService()
         {
             _basePath = Path.Combine(System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase,
                 "TunnelMonthFiles");
@@ -68,7 +68,7 @@ namespace Tunnel.Word.BuildWord.Month
         /// </summary>
         private void BuildCover()
         {
-            if (this._model==null)return;
+            if (this._model == null) return;
             WordManage.SetModel(this._model, _word.Document, _word.Builder);
         }
 
@@ -77,7 +77,7 @@ namespace Tunnel.Word.BuildWord.Month
             var jklcDocument = new Aspose.Words.Document(GetSroce("Tunnel.Word.ErchenFiles.二衬正文.doc"));
             //var jklcDocument = new Aspose.Words.Document(GetSroce("Tunnel.Word.TunnelMonthFiles.监控量测.docx"));
             var builder = new DocumentBuilder(jklcDocument);
-            if (this._bodyModel!=null)
+            if (this._bodyModel != null)
                 WordManage.SetModel(this._bodyModel, jklcDocument, builder);
 
             jklcDocument.UpdateFields();
@@ -95,7 +95,7 @@ namespace Tunnel.Word.BuildWord.Month
         /// </summary>
         private void SetEnclosure()
         {
-            if(_enclosureModels==null)return;
+            if (_enclosureModels == null) return;
             foreach (var enclosureModel in _enclosureModels)
             {
                 if (enclosureModel.Type == EnclosureType.Table)
@@ -132,9 +132,9 @@ namespace Tunnel.Word.BuildWord.Month
 
             int images = model.Images == null ? 0 : model.Images.Count;
 
-            for (int i = 0; i <8 ; i++)
+            for (int i = 0; i < 8; i++)
             {
-                if (model.Images != null && (i < images && model.Images[i]!=null))
+                if (model.Images != null && (i < images && model.Images[i] != null))
                 {
                     var bm = enclosurelDocument.Range.Bookmarks["Image" + (i + 1)];
                     if (bm != null)
@@ -144,15 +144,15 @@ namespace Tunnel.Word.BuildWord.Month
                         Shape shape = builder.InsertImage(model.Images[i].ImageUrl);
                         shape.Width = 195;
                     }
-                   
+
                     WordManage.BookMarkReplace(enclosurelDocument, builder, "Image" + (i + 1) + "_Name", model.Images[i].ImageName);
                 }
                 else
                 {
-                    WordManage.BookMarkReplace(enclosurelDocument, builder, "Image" + (i + 1) , "");
-                    WordManage.BookMarkReplace(enclosurelDocument, builder, "Image"+(i+1)+"_Name","");
+                    WordManage.BookMarkReplace(enclosurelDocument, builder, "Image" + (i + 1), "");
+                    WordManage.BookMarkReplace(enclosurelDocument, builder, "Image" + (i + 1) + "_Name", "");
                 }
-                
+
             }
 
 
@@ -211,3 +211,4 @@ namespace Tunnel.Word.BuildWord.Month
         }
     }
 }
+

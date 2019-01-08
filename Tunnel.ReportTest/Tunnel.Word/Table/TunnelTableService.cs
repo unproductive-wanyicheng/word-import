@@ -56,6 +56,21 @@ namespace Tunnel.Word.Table
             {
                 return BuildTable((ChuzhiGZCModel)tableData);
             }
+            // 二衬参数表
+            if (tableData is ErchenParamsModel)
+            {
+                return BuildTable((ErchenParamsModel)tableData);
+            }
+            // 二衬缺陷检查表
+            if (tableData is ErchenDefectModel)
+            {
+                return BuildTable((ErchenDefectModel)tableData);
+            }
+            // 二衬间距表
+            if (tableData is ErchenSpaceModel)
+            {
+                return BuildTable((ErchenSpaceModel)tableData);
+            }
             return new Document();
         }
 
@@ -348,6 +363,77 @@ namespace Tunnel.Word.Table
             return dc;
         }
 
+        private Document BuildTable(ErchenParamsModel model)
+        {
+            var dc = new Aspose.Words.Document(GetSroce("Tunnel.Word.ErchenFiles.二衬参数表.doc"));
+            var builder = new DocumentBuilder(dc);
+            NodeCollection allTables = dc.GetChildNodes(NodeType.Table, true);
+            Aspose.Words.Tables.Table table = allTables[0] as Aspose.Words.Tables.Table;
+            if (table == null) return new Document();
+
+            foreach (var sectionData in model.ErchenParamsDatas)
+            {
+                var row = CreateRow(new[]
+                {
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                }, dc);
+                table.AppendChild(row);
+            }
+            int rowNum = 0;
+
+            foreach (Row row in table.Rows)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    if (rowNum != 0)
+                    {
+                        string text = "";
+                        if (j == 0)
+                        {
+                            text = model.ErchenParamsDatas[rowNum - 1].ParamsMileage;
+                        }
+                        if (j == 1)
+                        {
+                            text = model.ErchenParamsDatas[rowNum - 1].SurroundingRockLevel;
+                        }
+                        if (j == 2)
+                        {
+                            text = model.ErchenParamsDatas[rowNum - 1].ProtectType;
+                        }
+                        if (j == 3)
+                        {
+                            text = model.ErchenParamsDatas[rowNum - 1].ErchenThickness;
+                        }
+                        if (j == 4)
+                        {
+                            text = model.ErchenParamsDatas[rowNum - 1].ErchenSpacingOfSteelSupport;
+                        }
+                        if (j == 5)
+                        {
+                            text = model.ErchenParamsDatas[rowNum - 1].Remark;
+                        }
+                        builder.MoveToCell(0, rowNum, j, 0);
+                        Aspose.Words.Font font = builder.Font;
+                        font.Size = 10;
+                        builder.ParagraphFormat.LineSpacing = 10;
+                        builder.Write(text);
+                    }
+                    row.Cells[j].FirstParagraph.ParagraphFormat.Alignment = ParagraphAlignment.Center;
+                    row.Cells[j].CellFormat.VerticalAlignment = CellVerticalAlignment.Center;
+                }
+                rowNum++;
+            }
+            table.SetBorder(BorderType.Bottom, LineStyle.Single, 2, Color.Black, true);
+            table.SetBorder(BorderType.Left, LineStyle.Single, 2, Color.Black, true);
+            table.SetBorder(BorderType.Right, LineStyle.Single, 2, Color.Black, true);
+            return dc;
+        }
+
         private Document BuildTable(ChuzhiParamsModel model)
         {
             var dc = new Aspose.Words.Document(GetSroce("Tunnel.Word.ChuzhiJiance.初支检测参数表.doc"));
@@ -410,6 +496,77 @@ namespace Tunnel.Word.Table
                         if (j == 5)
                         {
                             text = model.ChuzhiParamsDatas[rowNum - 1].Remark;
+                        }
+                        builder.MoveToCell(0, rowNum, j, 0);
+                        Aspose.Words.Font font = builder.Font;
+                        font.Size = 10;
+                        builder.ParagraphFormat.LineSpacing = 10;
+                        builder.Write(text);
+                    }
+                    row.Cells[j].FirstParagraph.ParagraphFormat.Alignment = ParagraphAlignment.Center;
+                    row.Cells[j].CellFormat.VerticalAlignment = CellVerticalAlignment.Center;
+                }
+                rowNum++;
+            }
+            table.SetBorder(BorderType.Bottom, LineStyle.Single, 2, Color.Black, true);
+            table.SetBorder(BorderType.Left, LineStyle.Single, 2, Color.Black, true);
+            table.SetBorder(BorderType.Right, LineStyle.Single, 2, Color.Black, true);
+            return dc;
+        }
+
+        private Document BuildTable(ErchenDefectModel model)
+        {
+            var dc = new Aspose.Words.Document(GetSroce("Tunnel.Word.ErchenFiles.二衬缺陷表.doc"));
+            var builder = new DocumentBuilder(dc);
+            NodeCollection allTables = dc.GetChildNodes(NodeType.Table, true);
+            Aspose.Words.Tables.Table table = allTables[0] as Aspose.Words.Tables.Table;
+            if (table == null) return new Document();
+
+            foreach (var sectionData in model.ErchenDefectDatas)
+            {
+                var row = CreateRow(new[]
+                {
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                }, dc);
+                table.AppendChild(row);
+            }
+            int rowNum = 0;
+
+            foreach (Row row in table.Rows)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    if (rowNum != 0)
+                    {
+                        string text = "";
+                        if (j == 0)
+                        {
+                            text = model.ErchenDefectDatas[rowNum - 1].Index;
+                        }
+                        if (j == 1)
+                        {
+                            text = model.ErchenDefectDatas[rowNum - 1].Position;
+                        }
+                        if (j == 2)
+                        {
+                            text = model.ErchenDefectDatas[rowNum - 1].ParamsMileage;
+                        }
+                        if (j == 3)
+                        {
+                            text = model.ErchenDefectDatas[rowNum - 1].BadLength;
+                        }
+                        if (j == 4)
+                        {
+                            text = model.ErchenDefectDatas[rowNum - 1].BadType;
+                        }
+                        if (j == 5)
+                        {
+                            text = model.ErchenDefectDatas[rowNum - 1].Remark;
                         }
                         builder.MoveToCell(0, rowNum, j, 0);
                         Aspose.Words.Font font = builder.Font;
@@ -567,6 +724,87 @@ namespace Tunnel.Word.Table
                         if (j == 7)
                         {
                             text = model.ChuzhiGZCDatas[rowNum - 1].FactSpacing;
+                        }
+                        builder.MoveToCell(0, rowNum, j, 0);
+                        Aspose.Words.Font font = builder.Font;
+                        font.Size = 10;
+                        builder.ParagraphFormat.LineSpacing = 10;
+                        builder.Write(text);
+                    }
+                    row.Cells[j].FirstParagraph.ParagraphFormat.Alignment = ParagraphAlignment.Center;
+                    row.Cells[j].CellFormat.VerticalAlignment = CellVerticalAlignment.Center;
+                }
+                rowNum++;
+            }
+            table.SetBorder(BorderType.Bottom, LineStyle.Single, 2, Color.Black, true);
+            table.SetBorder(BorderType.Left, LineStyle.Single, 2, Color.Black, true);
+            table.SetBorder(BorderType.Right, LineStyle.Single, 2, Color.Black, true);
+            return dc;
+        }
+
+        private Document BuildTable(ErchenSpaceModel model)
+        {
+            var dc = new Aspose.Words.Document(GetSroce("Tunnel.Word.ErchenFiles.二衬间距表.doc"));
+            var builder = new DocumentBuilder(dc);
+            NodeCollection allTables = dc.GetChildNodes(NodeType.Table, true);
+            Aspose.Words.Tables.Table table = allTables[0] as Aspose.Words.Tables.Table;
+            if (table == null) return new Document();
+
+            foreach (var sectionData in model.ErchenSpaceDatas)
+            {
+                var row = CreateRow(new[]
+                {
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                }, dc);
+                table.AppendChild(row);
+            }
+            int rowNum = 0;
+
+            foreach (Row row in table.Rows)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (rowNum != 0)
+                    {
+                        string text = "";
+                        if (j == 0)
+                        {
+                            text = model.ErchenSpaceDatas[rowNum - 1].Index;
+                        }
+                        if (j == 1)
+                        {
+                            text = model.ErchenSpaceDatas[rowNum - 1].ParamsMileage;
+                        }
+                        if (j == 2)
+                        {
+                            text = model.ErchenSpaceDatas[rowNum - 1].ProtectType;
+                        }
+                        if (j == 3)
+                        {
+                            text = model.ErchenSpaceDatas[rowNum - 1].DesginNums;
+                        }
+                        if (j == 4)
+                        {
+                            text = model.ErchenSpaceDatas[rowNum - 1].FactMax;
+                        }
+                        if (j == 5)
+                        {
+                            text = model.ErchenSpaceDatas[rowNum - 1].FactMin;
+                        }
+                        if (j == 6)
+                        {
+                            text = model.ErchenSpaceDatas[rowNum - 1].FactAve;
+                        }
+                        if (j == 7)
+                        {
+                            text = model.ErchenSpaceDatas[rowNum - 1].Remark;
                         }
                         builder.MoveToCell(0, rowNum, j, 0);
                         Aspose.Words.Font font = builder.Font;
