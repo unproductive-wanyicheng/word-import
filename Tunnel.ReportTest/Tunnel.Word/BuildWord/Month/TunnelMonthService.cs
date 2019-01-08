@@ -106,6 +106,10 @@ namespace Tunnel.Word.BuildWord.Month
                 {
                     SetEnclosure2(enclosureModel);
                 }
+                else if (enclosureModel.Type == EnclosureType.ChuzhiImage)
+                {
+                    SetEnclosure3(enclosureModel);
+                }
             }
         }
 
@@ -149,6 +153,46 @@ namespace Tunnel.Word.BuildWord.Month
                     WordManage.BookMarkReplace(enclosurelDocument, builder, "Image"+(i+1)+"_Name","");
                 }
                 
+            }
+
+
+            _word.Document.AppendDocument(enclosurelDocument, ImportFormatMode.UseDestinationStyles);
+
+            _word.Document.UpdateFields();
+
+            _coverCount += enclosurelDocument.PageCount;
+        }
+
+        private void SetEnclosure3(EnclosureModel model)
+        {
+            var enclosurelDocument = new Aspose.Words.Document(GetSroce("Tunnel.Word.ChuzhiJiance.初支附件1.doc"));
+            var builder = new DocumentBuilder(enclosurelDocument);
+            WordManage.SetModel(model, enclosurelDocument, builder);
+
+            int images = model.Images == null ? 0 : model.Images.Count;
+
+            for (int i = 0; i < 1; i++)
+            {
+                if (model.Images != null && (i < images && model.Images[i] != null))
+                {
+                    var bm = enclosurelDocument.Range.Bookmarks["Image" + (i + 1)];
+                    if (bm != null)
+                    {
+                        builder.MoveToBookmark("Image" + (i + 1));
+                        bm.Text = "";
+                        Shape shape = builder.InsertImage(model.Images[i].ImageUrl);
+                        shape.Width = 720;
+                        shape.Height = 380;
+                    }
+
+                    WordManage.BookMarkReplace(enclosurelDocument, builder, "Image" + (i + 1) + "_Name", model.Images[i].ImageName);
+                }
+                else
+                {
+                    WordManage.BookMarkReplace(enclosurelDocument, builder, "Image" + (i + 1), "");
+                    WordManage.BookMarkReplace(enclosurelDocument, builder, "Image" + (i + 1) + "_Name", "");
+                }
+
             }
 
 

@@ -95,10 +95,24 @@ namespace Tunnel.Word.BuildWord.Month
         public string ChuzhiGangzhichengConclusion { get; set; }
 
         /// <summary>
+        /// T0602_初支缺陷里程段
+        /// </summary>
+        [WordMark(MarkName = "T0602_初支缺陷里程段")]
+
+        public string ChuzhiQuexianMileage { get; set; }
+
+        /// <summary>
+        /// T0603_初支缺陷结论
+        /// </summary>
+        [WordMark(MarkName = "T0603_初支缺陷结论")]
+
+        public string ChuzhiQuexianConclusion1 { get; set; }
+
+        /// <summary>
         /// T0401_初支参数表
         /// 2019年1月7日
         /// </summary>
-        
+
         [WordMark(MarkName = "T0401_初支参数表1", MarkType = MarkType.BuildData)]
         public List<IListModel> ChuzhiParamsTable1 { get; set; }
 

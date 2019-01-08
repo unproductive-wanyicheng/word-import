@@ -46,6 +46,16 @@ namespace Tunnel.Word.Table
             {
                 return BuildTable((ChuzhiThicknessModel)tableData);
             }
+            // 初支缺陷检查表
+            if (tableData is ChuzhiQuexianModel)
+            {
+                return BuildTable((ChuzhiQuexianModel)tableData);
+            }
+            // 初支缺陷检查表
+            if (tableData is ChuzhiGZCModel)
+            {
+                return BuildTable((ChuzhiGZCModel)tableData);
+            }
             return new Document();
         }
 
@@ -58,81 +68,81 @@ namespace Tunnel.Word.Table
             NodeCollection allTables = dc.GetChildNodes(NodeType.Table, true);
             Aspose.Words.Tables.Table table = allTables[0] as Aspose.Words.Tables.Table;
             if (table == null) return new Document();
-            int j = 1;
+            int j = 2;
             List<RowMergeData> dic = new List<RowMergeData>();
             // 初始化表格
-            if (model.ChuzhiThicknessDatas != null)
-            {
-                for(var i=0;i< model.ChuzhiThicknessDatas.Count+1;i++)
-                {
-                    var row = CreateRow(new[]
-                    {
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        ""
-                    }, dc);
-                    table.AppendChild(row);
-                }
-            }
-            
+            //if (model.ChuzhiThicknessDatas != null)
+            //{
+            //    for(var i=0;i< model.ChuzhiThicknessDatas.Count+1;i++)
+            //    {
+            //        var row = CreateRow(new[]
+            //        {
+            //            "",
+            //            "",
+            //            "",
+            //            "",
+            //            "",
+            //            "",
+            //            "",
+            //            "",
+            //            "",
+            //            "",
+            //            "",
+            //            "",
+            //            "",
+            //            ""
+            //        }, dc);
+            //        table.AppendChild(row);
+            //    }
+            //}
+
             // 设置属性
-            if (model.ChuzhiThicknessDatas != null)
-            {
-                int L = model.ChuzhiThicknessDatas.Count;
-                for (int i = 0; i < L; i++)
-                {
-                    var cellData = model.ChuzhiThicknessDatas[i];
-                    SetRowData(dc, table.Rows[i+2], new[]
-                    {
-                        cellData.Index,
-                        cellData.ParamsMileage,
-                        i == 0 ? model.ShotcreteThickness : "",
-                        cellData.RealThicknessG,
-                        cellData.RealThicknessE,
-                        cellData.RealThicknessC,
-                        cellData.RealThicknessA,
-                        cellData.RealThicknessB,
-                        cellData.RealThicknessD,
-                        cellData.RealThicknessF,
-                        i == 0 ? model.MaxThickness : "",
-                        i == 0 ? model.MinThickness : "",
-                        i == 0 ? model.AverageThickness : "",
-                        i == 0 ? model.GoodPercent : "",
-                    });
-                }
-                SetRowData(dc, table.Rows[L+2], new[]
-                {
-                    model.BottomText,
-                    "",
-                    "",
-                    model.ChuzhiThicknessAveDatas[0].RealThicknessG,
-                    model.ChuzhiThicknessAveDatas[0].RealThicknessE,
-                    model.ChuzhiThicknessAveDatas[0].RealThicknessC,
-                    model.ChuzhiThicknessAveDatas[0].RealThicknessA,
-                    model.ChuzhiThicknessAveDatas[0].RealThicknessB,
-                    model.ChuzhiThicknessAveDatas[0].RealThicknessD,
-                    model.ChuzhiThicknessAveDatas[0].RealThicknessF,
-                    "",
-                    "",
-                    "",
-                    "",
-                });
-            }
-            Cell cellStartRange = table.Rows[2].Cells[2];
-            Cell cellEndRange = table.Rows[2].Cells[2];
-            Console.WriteLine(cellStartRange.GetText());
-            MergeCells(cellStartRange, cellEndRange);
+            //if (model.ChuzhiThicknessDatas != null)
+            //{
+            //    int L = model.ChuzhiThicknessDatas.Count;
+            //    for (int i = 0; i < L; i++)
+            //    {
+            //        var cellData = model.ChuzhiThicknessDatas[i];
+            //        SetRowData(dc, table.Rows[i+2], new[]
+            //        {
+            //            cellData.Index,
+            //            cellData.ParamsMileage,
+            //            i == 0 ? model.ShotcreteThickness : "",
+            //            cellData.RealThicknessG,
+            //            cellData.RealThicknessE,
+            //            cellData.RealThicknessC,
+            //            cellData.RealThicknessA,
+            //            cellData.RealThicknessB,
+            //            cellData.RealThicknessD,
+            //            cellData.RealThicknessF,
+            //            i == 0 ? model.MaxThickness : "",
+            //            i == 0 ? model.MinThickness : "",
+            //            i == 0 ? model.AverageThickness : "",
+            //            i == 0 ? model.GoodPercent : "",
+            //        });
+            //    }
+            //    SetRowData(dc, table.Rows[L+2], new[]
+            //    {
+            //        model.BottomText,
+            //        "",
+            //        "",
+            //        model.ChuzhiThicknessAveDatas[0].RealThicknessG,
+            //        model.ChuzhiThicknessAveDatas[0].RealThicknessE,
+            //        model.ChuzhiThicknessAveDatas[0].RealThicknessC,
+            //        model.ChuzhiThicknessAveDatas[0].RealThicknessA,
+            //        model.ChuzhiThicknessAveDatas[0].RealThicknessB,
+            //        model.ChuzhiThicknessAveDatas[0].RealThicknessD,
+            //        model.ChuzhiThicknessAveDatas[0].RealThicknessF,
+            //        "",
+            //        "",
+            //        "",
+            //        "",
+            //    });
+            //}
+            //Cell cellStartRange = table.Rows[2].Cells[2];
+            //Cell cellEndRange = table.Rows[4].Cells[2];
+            //Console.WriteLine(cellStartRange.GetText());
+            //MergeCells(cellStartRange, cellEndRange);
             //foreach (var dataTypeModel in model.DataTypeModels)
             //{
             //    if (dataTypeModel.DataList != null)
@@ -176,135 +186,162 @@ namespace Tunnel.Word.Table
             //{
             //    table.Rows.Remove(table.LastRow);
             //}
-            //for (var i = 2; i < table.Rows.Count; i++)
-            //{
-            //    var row = table.Rows[i];
-            //    for (var k = 0; k < 14; k++)
-            //    {
-            //        string text = "";
-            //        if (k == 0 && i != table.Rows.Count - 1)
-            //        {
-            //            text = model.ChuzhiThicknessDatas[i - 2].Index;
-            //        }
-            //        if (k == 0 && i == table.Rows.Count - 1)
-            //        {
-            //            text = model.BottomText;
-            //        }
-            //        if (k == 1 && i != table.Rows.Count - 1)
-            //        {
-            //            text = model.ChuzhiThicknessDatas[i - 2].ParamsMileage;
-            //        }
-            //        if (k == 1 && i == table.Rows.Count - 1)
-            //        {
-            //            text = "";
-            //        }
-            //        if (k == 2 && i == 2)
-            //        {
-            //            text = model.ShotcreteThickness;
-            //        }
-            //        if (k == 2 && i != 2)
-            //        {
-            //            text = "";
-            //        }
-            //        if (k == 3 && i != table.Rows.Count - 1)
-            //        {
-            //            text = model.ChuzhiThicknessDatas[i - 2].RealThicknessG;
-            //        }
-            //        if (k == 3 && i == table.Rows.Count - 1)
-            //        {
-            //            text = model.ChuzhiThicknessAveDatas[0].RealThicknessG;
-            //        }
-            //        if (k == 4 && i != table.Rows.Count - 1)
-            //        {
-            //            text = model.ChuzhiThicknessDatas[i - 2].RealThicknessE;
-            //        }
-            //        if (k == 4 && i == table.Rows.Count - 1)
-            //        {
-            //            text = model.ChuzhiThicknessAveDatas[0].RealThicknessE;
-            //        }
-            //        if (k == 5 && i != table.Rows.Count - 1)
-            //        {
-            //            text = model.ChuzhiThicknessDatas[i - 2].RealThicknessC;
-            //        }
-            //        if (k == 5 && i == table.Rows.Count - 1)
-            //        {
-            //            text = model.ChuzhiThicknessAveDatas[0].RealThicknessC;
-            //        }
-            //        if (k == 6 && i != table.Rows.Count - 1)
-            //        {
-            //            text = model.ChuzhiThicknessDatas[i - 2].RealThicknessA;
-            //        }
-            //        if (k == 6 && i == table.Rows.Count - 1)
-            //        {
-            //            text = model.ChuzhiThicknessAveDatas[0].RealThicknessA;
-            //        }
-            //        if (k == 7 && i != table.Rows.Count - 1)
-            //        {
-            //            text = model.ChuzhiThicknessDatas[i - 2].RealThicknessB;
-            //        }
-            //        if (k == 7 && i == table.Rows.Count - 1)
-            //        {
-            //            text = model.ChuzhiThicknessAveDatas[0].RealThicknessB;
-            //        }
-            //        if (k == 8 && i != table.Rows.Count - 1)
-            //        {
-            //            text = model.ChuzhiThicknessDatas[i - 2].RealThicknessD;
-            //        }
-            //        if (k == 8 && i == table.Rows.Count - 1)
-            //        {
-            //            text = model.ChuzhiThicknessAveDatas[0].RealThicknessD;
-            //        }
-            //        if (k == 9 && i != table.Rows.Count - 1)
-            //        {
-            //            text = model.ChuzhiThicknessDatas[i - 2].RealThicknessF;
-            //        }
-            //        if (k == 9 && i == table.Rows.Count - 1)
-            //        {
-            //            text = model.ChuzhiThicknessAveDatas[0].RealThicknessF;
-            //        }
-            //        if (k == 10 && i != 2)
-            //        {
-            //            text = "";
-            //        }
-            //        if (k == 10 && i == 2)
-            //        {
-            //            text = model.MaxThickness;
-            //        }
-            //        if (k == 11 && i != 2)
-            //        {
-            //            text = "";
-            //        }
-            //        if (k == 11 && i == 2)
-            //        {
-            //            text = model.MinThickness;
-            //        }
-            //        if (k == 12 && i != 2)
-            //        {
-            //            text = "";
-            //        }
-            //        if (k == 12 && i == 2)
-            //        {
-            //            text = model.AverageThickness;
-            //        }
-            //        if (k == 13 && i != 2)
-            //        {
-            //            text = "";
-            //        }
-            //        if (k == 13 && i == 2)
-            //        {
-            //            text = model.GoodPercent;
-            //        }
+            int dataL = model.ChuzhiThicknessDatas.Count + 1;
+            for (var i = 2; i <= dataL; i++)
+            {
+                var row = table.Rows[i];
+                for (var k = 0; k < 14; k++)
+                {
+                    string text = "";
+                    if (k == 0 && i != dataL)
+                    {
+                        text = model.ChuzhiThicknessDatas[i - 2].Index;
+                    }
+                    if (k == 0 && i == dataL)
+                    {
+                        text = model.BottomText;
+                    }
+                    if (k == 1 && i != dataL)
+                    {
+                        text = model.ChuzhiThicknessDatas[i - 2].ParamsMileage;
+                    }
+                    if (k == 1 && i == dataL)
+                    {
+                        text = "";
+                    }
+                    if (k == 2 && i == 2)
+                    {
+                        text = model.ShotcreteThickness;
+                    }
+                    if (k == 2 && i != 2)
+                    {
+                        text = "";
+                    }
+                    if (k == 3 && i != dataL)
+                    {
+                        text = model.ChuzhiThicknessDatas[i - 2].RealThicknessG;
+                    }
+                    if (k == 3 && i == dataL)
+                    {
+                        text = model.ChuzhiThicknessAveDatas[0].RealThicknessG;
+                    }
+                    if (k == 4 && i != dataL)
+                    {
+                        text = model.ChuzhiThicknessDatas[i - 2].RealThicknessE;
+                    }
+                    if (k == 4 && i == dataL)
+                    {
+                        text = model.ChuzhiThicknessAveDatas[0].RealThicknessE;
+                    }
+                    if (k == 5 && i != dataL)
+                    {
+                        text = model.ChuzhiThicknessDatas[i - 2].RealThicknessC;
+                    }
+                    if (k == 5 && i == dataL)
+                    {
+                        text = model.ChuzhiThicknessAveDatas[0].RealThicknessC;
+                    }
+                    if (k == 6 && i != dataL)
+                    {
+                        text = model.ChuzhiThicknessDatas[i - 2].RealThicknessA;
+                    }
+                    if (k == 6 && i == dataL)
+                    {
+                        text = model.ChuzhiThicknessAveDatas[0].RealThicknessA;
+                    }
+                    if (k == 7 && i != dataL)
+                    {
+                        text = model.ChuzhiThicknessDatas[i - 2].RealThicknessB;
+                    }
+                    if (k == 7 && i == dataL)
+                    {
+                        text = model.ChuzhiThicknessAveDatas[0].RealThicknessB;
+                    }
+                    if (k == 8 && i != dataL)
+                    {
+                        text = model.ChuzhiThicknessDatas[i - 2].RealThicknessD;
+                    }
+                    if (k == 8 && i == dataL)
+                    {
+                        text = model.ChuzhiThicknessAveDatas[0].RealThicknessD;
+                    }
+                    if (k == 9 && i != dataL)
+                    {
+                        text = model.ChuzhiThicknessDatas[i - 2].RealThicknessF;
+                    }
+                    if (k == 9 && i == dataL)
+                    {
+                        text = model.ChuzhiThicknessAveDatas[0].RealThicknessF;
+                    }
+                    if (k == 10 && i != 2)
+                    {
+                        text = "";
+                    }
+                    if (k == 10 && i == 2)
+                    {
+                        text = model.MaxThickness;
+                    }
+                    if (k == 11 && i != 2)
+                    {
+                        text = "";
+                    }
+                    if (k == 11 && i == 2)
+                    {
+                        text = model.MinThickness;
+                    }
+                    if (k == 12 && i != 2)
+                    {
+                        text = "";
+                    }
+                    if (k == 12 && i == 2)
+                    {
+                        text = model.AverageThickness;
+                    }
+                    if (k == 13 && i != 2)
+                    {
+                        text = "";
+                    }
+                    if (k == 13 && i == 2)
+                    {
+                        text = model.GoodPercent;
+                    }
 
-            //        builder.MoveToCell(0, i, k, 0);
-            //        Aspose.Words.Font font = builder.Font;
-            //        font.Size = 10;
-            //        builder.ParagraphFormat.LineSpacing = 10;
-            //        builder.Write(text);
+                    builder.MoveToCell(0, i, k, 0);
+                    Aspose.Words.Font font = builder.Font;
+                    font.Size = 10;
+                    builder.Bold = false;
+                    builder.ParagraphFormat.LineSpacing = 10;
+                    builder.Write(text);
 
-            //        row.Cells[k].FirstParagraph.ParagraphFormat.Alignment = ParagraphAlignment.Center;
-            //        row.Cells[k].CellFormat.VerticalAlignment = CellVerticalAlignment.Center;
-            //    }
-            //}
+                    row.Cells[k].FirstParagraph.ParagraphFormat.Alignment = ParagraphAlignment.Center;
+                    row.Cells[k].CellFormat.VerticalAlignment = CellVerticalAlignment.Center;
+                }
+                j++;
+            }
+            while (table.Rows.Count != j)
+            {
+                table.Rows.Remove(table.LastRow);
+            }
+            // 合并表格
+            Cell cellStartRange = table.Rows[2].Cells[2];
+            Cell cellEndRange = table.Rows[j-2].Cells[2];
+            MergeCells(cellStartRange, cellEndRange);
+            Cell cellStartRange1 = table.Rows[2].Cells[10];
+            Cell cellEndRange1 = table.Rows[j-1].Cells[10];
+            MergeCells(cellStartRange1, cellEndRange1);
+            Cell cellStartRange2 = table.Rows[2].Cells[11];
+            Cell cellEndRange2 = table.Rows[j-1].Cells[11];
+            MergeCells(cellStartRange2, cellEndRange2);
+            Cell cellStartRange3 = table.Rows[2].Cells[12];
+            Cell cellEndRange3 = table.Rows[j-1].Cells[12];
+            MergeCells(cellStartRange3, cellEndRange3);
+            Cell cellStartRange4 = table.Rows[2].Cells[13];
+            Cell cellEndRange4 = table.Rows[j-1].Cells[13];
+            MergeCells(cellStartRange4, cellEndRange4);
+            Cell cellStartRange5 = table.Rows[j - 1].Cells[0];
+            Cell cellEndRange5 = table.Rows[j - 1].Cells[2];
+            MergeCells(cellStartRange5, cellEndRange5);
+
             table.SetBorder(BorderType.Left, LineStyle.Single, 2, Color.Black, true);
             table.SetBorder(BorderType.Right, LineStyle.Single, 2, Color.Black, true);
             table.SetBorder(BorderType.Bottom, LineStyle.Single, 2, Color.Black, true);
@@ -373,6 +410,163 @@ namespace Tunnel.Word.Table
                         if (j == 5)
                         {
                             text = model.ChuzhiParamsDatas[rowNum - 1].Remark;
+                        }
+                        builder.MoveToCell(0, rowNum, j, 0);
+                        Aspose.Words.Font font = builder.Font;
+                        font.Size = 10;
+                        builder.ParagraphFormat.LineSpacing = 10;
+                        builder.Write(text);
+                    }
+                    row.Cells[j].FirstParagraph.ParagraphFormat.Alignment = ParagraphAlignment.Center;
+                    row.Cells[j].CellFormat.VerticalAlignment = CellVerticalAlignment.Center;
+                }
+                rowNum++;
+            }
+            table.SetBorder(BorderType.Bottom, LineStyle.Single, 2, Color.Black, true);
+            table.SetBorder(BorderType.Left, LineStyle.Single, 2, Color.Black, true);
+            table.SetBorder(BorderType.Right, LineStyle.Single, 2, Color.Black, true);
+            return dc;
+        }
+
+        private Document BuildTable(ChuzhiQuexianModel model)
+        {
+            var dc = new Aspose.Words.Document(GetSroce("Tunnel.Word.ChuzhiJiance.初支缺陷检测表.doc"));
+            var builder = new DocumentBuilder(dc);
+            NodeCollection allTables = dc.GetChildNodes(NodeType.Table, true);
+            Aspose.Words.Tables.Table table = allTables[0] as Aspose.Words.Tables.Table;
+            if (table == null) return new Document();
+
+            foreach (var sectionData in model.ChuzhiQuexianDatas)
+            {
+                var row = CreateRow(new[]
+                {
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                }, dc);
+                table.AppendChild(row);
+            }
+            int rowNum = 0;
+
+            foreach (Row row in table.Rows)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    if (rowNum != 0)
+                    {
+                        string text = "";
+                        if (j == 0)
+                        {
+                            text = model.ChuzhiQuexianDatas[rowNum - 1].Index;
+                        }
+                        if (j == 1)
+                        {
+                            text = model.ChuzhiQuexianDatas[rowNum - 1].Position;
+                        }
+                        if (j == 2)
+                        {
+                            text = model.ChuzhiQuexianDatas[rowNum - 1].ParamsMileage;
+                        }
+                        if (j == 3)
+                        {
+                            text = model.ChuzhiQuexianDatas[rowNum - 1].BadLength;
+                        }
+                        if (j == 4)
+                        {
+                            text = model.ChuzhiQuexianDatas[rowNum - 1].BadType;
+                        }
+                        if (j == 5)
+                        {
+                            text = model.ChuzhiQuexianDatas[rowNum - 1].BadDeepth;
+                        }
+                        if (j == 6)
+                        {
+                            text = model.ChuzhiQuexianDatas[rowNum - 1].Remark;
+                        }
+                        builder.MoveToCell(0, rowNum, j, 0);
+                        Aspose.Words.Font font = builder.Font;
+                        font.Size = 10;
+                        builder.ParagraphFormat.LineSpacing = 10;
+                        builder.Write(text);
+                    }
+                    row.Cells[j].FirstParagraph.ParagraphFormat.Alignment = ParagraphAlignment.Center;
+                    row.Cells[j].CellFormat.VerticalAlignment = CellVerticalAlignment.Center;
+                }
+                rowNum++;
+            }
+            table.SetBorder(BorderType.Bottom, LineStyle.Single, 2, Color.Black, true);
+            table.SetBorder(BorderType.Left, LineStyle.Single, 2, Color.Black, true);
+            table.SetBorder(BorderType.Right, LineStyle.Single, 2, Color.Black, true);
+            return dc;
+        }
+
+        private Document BuildTable(ChuzhiGZCModel model)
+        {
+            var dc = new Aspose.Words.Document(GetSroce("Tunnel.Word.ChuzhiJiance.初支钢支撑检测表.doc"));
+            var builder = new DocumentBuilder(dc);
+            NodeCollection allTables = dc.GetChildNodes(NodeType.Table, true);
+            Aspose.Words.Tables.Table table = allTables[0] as Aspose.Words.Tables.Table;
+            if (table == null) return new Document();
+
+            foreach (var sectionData in model.ChuzhiGZCDatas)
+            {
+                var row = CreateRow(new[]
+                {
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                }, dc);
+                table.AppendChild(row);
+            }
+            int rowNum = 0;
+
+            foreach (Row row in table.Rows)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (rowNum != 0)
+                    {
+                        string text = "";
+                        if (j == 0)
+                        {
+                            text = model.ChuzhiGZCDatas[rowNum - 1].Index;
+                        }
+                        if (j == 1)
+                        {
+                            text = model.ChuzhiGZCDatas[rowNum - 1].ParamsMileage;
+                        }
+                        if (j == 2)
+                        {
+                            text = model.ChuzhiGZCDatas[rowNum - 1].SurroundingRockLevel;
+                        }
+                        if (j == 3)
+                        {
+                            text = model.ChuzhiGZCDatas[rowNum - 1].ProtectType;
+                        }
+                        if (j == 4)
+                        {
+                            text = model.ChuzhiGZCDatas[rowNum - 1].DesginNums;
+                        }
+                        if (j == 5)
+                        {
+                            text = model.ChuzhiGZCDatas[rowNum - 1].FactNums;
+                        }
+                        if (j == 6)
+                        {
+                            text = model.ChuzhiGZCDatas[rowNum - 1].DesginSpacing;
+                        }
+                        if (j == 7)
+                        {
+                            text = model.ChuzhiGZCDatas[rowNum - 1].FactSpacing;
                         }
                         builder.MoveToCell(0, rowNum, j, 0);
                         Aspose.Words.Font font = builder.Font;

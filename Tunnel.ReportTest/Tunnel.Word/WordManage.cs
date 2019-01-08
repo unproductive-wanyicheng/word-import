@@ -538,13 +538,10 @@ namespace Tunnel.Word
         {
             var doc = new TunnelTableService().BuildTable(tableData);
             builder.ParagraphFormat.Alignment = ParagraphAlignment.Center;
-            //Aspose.Words.Font font = builder.Font;
-            //font.Size = 8;
             builder.Writeln(((TableDataModel) tableData).TableName);
             builder.Bold = true;
             builder.ParagraphFormat.Alignment = ParagraphAlignment.Left;
             builder.Bold = false;
-            
             builder.InsertDocument(doc, ImportFormatMode.KeepSourceFormatting);
         }
 

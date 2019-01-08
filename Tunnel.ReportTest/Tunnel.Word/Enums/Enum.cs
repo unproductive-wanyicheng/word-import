@@ -9,6 +9,8 @@ namespace Tunnel.Word.Enums
     public enum EnclosureType
     {
         Image = 1,
-        Table = 2
+        Table = 2,
+        ChuzhiImage = 3,
+        ErChenImage = 4
     }
 }
