@@ -71,7 +71,198 @@ namespace Tunnel.Word.Table
             {
                 return BuildTable((ErchenSpaceModel)tableData);
             }
+            // 二衬厚度表
+            if (tableData is ErchenThicknessModel)
+            {
+                return BuildTable((ErchenThicknessModel)tableData);
+            }
             return new Document();
+        }
+
+        private Document BuildTable(ErchenThicknessModel model)
+        {
+            var dc = new Aspose.Words.Document(GetSroce("Tunnel.Word.ErchenFiles.二衬厚度表.doc"));
+            var builder = new DocumentBuilder(dc);
+            WordManage.SetModel(model, dc, builder);
+
+            NodeCollection allTables = dc.GetChildNodes(NodeType.Table, true);
+            Aspose.Words.Tables.Table table = allTables[0] as Aspose.Words.Tables.Table;
+            if (table == null) return new Document();
+            List<RowMergeData> dic = new List<RowMergeData>();
+            var nowRowPosition = 2;
+            if (model.ErchenDataList.Count > 0)
+            {
+                foreach(var erchenTableRowData in model.ErchenDataList)
+                {
+                    int dataL = erchenTableRowData.ErchenThicknessDatas.Count + 1;
+                    for (var i = 2; i <= dataL; i++)
+                    {
+                        var row = table.Rows[nowRowPosition];
+                        for (var k = 0; k < 14; k++)
+                        {
+                            string text = "";
+                            if (k == 0 && i != dataL)
+                            {
+                                text = erchenTableRowData.ErchenThicknessDatas[i - 2].Index;
+                            }
+                            if (k == 0 && i == dataL)
+                            {
+                                text = erchenTableRowData.BottomText;
+                            }
+                            if (k == 1 && i != dataL)
+                            {
+                                text = erchenTableRowData.ErchenThicknessDatas[i - 2].ParamsMileage;
+                            }
+                            if (k == 1 && i == dataL)
+                            {
+                                text = "";
+                            }
+                            if (k == 2 && i == 2)
+                            {
+                                text = erchenTableRowData.ShotcreteThickness;
+                            }
+                            if (k == 2 && i != 2)
+                            {
+                                text = "";
+                            }
+                            if (k == 3 && i != dataL)
+                            {
+                                text = erchenTableRowData.ErchenThicknessDatas[i - 2].RealThicknessG;
+                            }
+                            if (k == 3 && i == dataL)
+                            {
+                                text = erchenTableRowData.ErchenThicknessAveDatas[0].RealThicknessG;
+                            }
+                            if (k == 4 && i != dataL)
+                            {
+                                text = erchenTableRowData.ErchenThicknessDatas[i - 2].RealThicknessE;
+                            }
+                            if (k == 4 && i == dataL)
+                            {
+                                text = erchenTableRowData.ErchenThicknessAveDatas[0].RealThicknessE;
+                            }
+                            if (k == 5 && i != dataL)
+                            {
+                                text = erchenTableRowData.ErchenThicknessDatas[i - 2].RealThicknessC;
+                            }
+                            if (k == 5 && i == dataL)
+                            {
+                                text = erchenTableRowData.ErchenThicknessAveDatas[0].RealThicknessC;
+                            }
+                            if (k == 6 && i != dataL)
+                            {
+                                text = erchenTableRowData.ErchenThicknessDatas[i - 2].RealThicknessA;
+                            }
+                            if (k == 6 && i == dataL)
+                            {
+                                text = erchenTableRowData.ErchenThicknessAveDatas[0].RealThicknessA;
+                            }
+                            if (k == 7 && i != dataL)
+                            {
+                                text = erchenTableRowData.ErchenThicknessDatas[i - 2].RealThicknessB;
+                            }
+                            if (k == 7 && i == dataL)
+                            {
+                                text = erchenTableRowData.ErchenThicknessAveDatas[0].RealThicknessB;
+                            }
+                            if (k == 8 && i != dataL)
+                            {
+                                text = erchenTableRowData.ErchenThicknessDatas[i - 2].RealThicknessD;
+                            }
+                            if (k == 8 && i == dataL)
+                            {
+                                text = erchenTableRowData.ErchenThicknessAveDatas[0].RealThicknessD;
+                            }
+                            if (k == 9 && i != dataL)
+                            {
+                                text = erchenTableRowData.ErchenThicknessDatas[i - 2].RealThicknessF;
+                            }
+                            if (k == 9 && i == dataL)
+                            {
+                                text = erchenTableRowData.ErchenThicknessAveDatas[0].RealThicknessF;
+                            }
+                            if (k == 10 && i != 2)
+                            {
+                                text = "";
+                            }
+                            if (k == 10 && i == 2)
+                            {
+                                text = erchenTableRowData.MaxThickness;
+                            }
+                            if (k == 11 && i != 2)
+                            {
+                                text = "";
+                            }
+                            if (k == 11 && i == 2)
+                            {
+                                text = erchenTableRowData.MinThickness;
+                            }
+                            if (k == 12 && i != 2)
+                            {
+                                text = "";
+                            }
+                            if (k == 12 && i == 2)
+                            {
+                                text = erchenTableRowData.AverageThickness;
+                            }
+                            if (k == 13 && i != 2)
+                            {
+                                text = "";
+                            }
+                            if (k == 13 && i == 2)
+                            {
+                                text = erchenTableRowData.GoodPercent;
+                            }
+
+                            builder.MoveToCell(0, nowRowPosition, k, 0);
+                            Aspose.Words.Font font = builder.Font;
+                            font.Size = 10;
+                            builder.Bold = false;
+                            builder.ParagraphFormat.LineSpacing = 10;
+                            builder.Write(text);
+
+                            row.Cells[k].FirstParagraph.ParagraphFormat.Alignment = ParagraphAlignment.Center;
+                            row.Cells[k].CellFormat.VerticalAlignment = CellVerticalAlignment.Center;
+                        }
+                        if (erchenTableRowData.ErchenThicknessDatas.Count > 1 && i == erchenTableRowData.ErchenThicknessDatas.Count + 1)
+                        {
+                            dic.Add(new RowMergeData { RowJ = nowRowPosition, RowCount = erchenTableRowData.ErchenThicknessDatas.Count });
+                        }
+                        nowRowPosition++;
+                    }
+                }
+            }
+            
+            while (table.Rows.Count != nowRowPosition)
+            {
+                table.Rows.Remove(table.LastRow);
+            }
+            for (int i = dic.Count - 1; i >= 0; i--)
+            {
+                Cell cellStartRange = table.Rows[dic[i].RowJ - dic[i].RowCount + 1].Cells[2];
+                Cell cellEndRange = table.Rows[dic[i].RowJ-1].Cells[2];
+                MergeCells(cellStartRange, cellEndRange);
+                Cell cellStartRange1 = table.Rows[dic[i].RowJ - dic[i].RowCount + 1].Cells[10];
+                Cell cellEndRange1 = table.Rows[dic[i].RowJ].Cells[10];
+                MergeCells(cellStartRange1, cellEndRange1);
+                Cell cellStartRange2 = table.Rows[dic[i].RowJ - dic[i].RowCount + 1].Cells[11];
+                Cell cellEndRange2 = table.Rows[dic[i].RowJ].Cells[11];
+                MergeCells(cellStartRange2, cellEndRange2);
+                Cell cellStartRange3 = table.Rows[dic[i].RowJ - dic[i].RowCount + 1].Cells[12]; ;
+                Cell cellEndRange3 = table.Rows[dic[i].RowJ].Cells[12];
+                MergeCells(cellStartRange3, cellEndRange3);
+                Cell cellStartRange4 = table.Rows[dic[i].RowJ - dic[i].RowCount + 1].Cells[13];
+                Cell cellEndRange4 = table.Rows[dic[i].RowJ].Cells[13];
+                MergeCells(cellStartRange4, cellEndRange4);
+                Cell cellStartRange5 = table.Rows[dic[i].RowJ].Cells[0];
+                Cell cellEndRange5 = table.Rows[dic[i].RowJ].Cells[2];
+                MergeCells(cellStartRange5, cellEndRange5);
+            }
+
+            table.SetBorder(BorderType.Left, LineStyle.Single, 2, Color.Black, true);
+            table.SetBorder(BorderType.Right, LineStyle.Single, 2, Color.Black, true);
+            table.SetBorder(BorderType.Bottom, LineStyle.Single, 2, Color.Black, true);
+            return dc;
         }
 
         private Document BuildTable(ChuzhiThicknessModel model)

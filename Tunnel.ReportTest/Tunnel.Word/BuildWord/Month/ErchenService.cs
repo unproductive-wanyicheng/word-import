@@ -20,6 +20,7 @@ namespace Tunnel.Word.BuildWord.Month
         private CoverModel _model;
         private BodyModel _bodyModel;
         private List<EnclosureModel> _enclosureModels;
+        private List<ErchenFujianModel> _erEnclosureModels;
         private int _coverCount = 0;
         public ErchenService()
         {
@@ -52,6 +53,11 @@ namespace Tunnel.Word.BuildWord.Month
         public void SetEnclosureModel(List<EnclosureModel> models)
         {
             this._enclosureModels = models;
+        }
+
+        public void SetEnclosureModel(List<ErchenFujianModel> models)
+        {
+            this._erEnclosureModels = models;
         }
 
         /// <summary>
@@ -106,7 +112,10 @@ namespace Tunnel.Word.BuildWord.Month
                 {
                     SetEnclosure2(enclosureModel);
                 }
-                else if (enclosureModel.Type == EnclosureType.ChuzhiImage)
+            }
+            foreach (var enclosureModel in _erEnclosureModels)
+            {
+                if (enclosureModel.Type == EnclosureType.ErChenImageList)
                 {
                     SetEnclosure3(enclosureModel);
                 }
@@ -163,15 +172,16 @@ namespace Tunnel.Word.BuildWord.Month
             _coverCount += enclosurelDocument.PageCount;
         }
 
-        private void SetEnclosure3(EnclosureModel model)
+        private void SetEnclosure3(ErchenFujianModel model)
         {
-            var enclosurelDocument = new Aspose.Words.Document(GetSroce("Tunnel.Word.ChuzhiJiance.初支附件1.doc"));
+            //var enclosurelDocument = new Aspose.Words.Document(GetSroce("Tunnel.Word.ChuzhiJiance.初支附件1.doc"));
+            var enclosurelDocument = _word.Document;
             var builder = new DocumentBuilder(enclosurelDocument);
             WordManage.SetModel(model, enclosurelDocument, builder);
 
             int images = model.Images == null ? 0 : model.Images.Count;
 
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < images; i++)
             {
                 if (model.Images != null && (i < images && model.Images[i] != null))
                 {
@@ -181,8 +191,8 @@ namespace Tunnel.Word.BuildWord.Month
                         builder.MoveToBookmark("Image" + (i + 1));
                         bm.Text = "";
                         Shape shape = builder.InsertImage(model.Images[i].ImageUrl);
-                        shape.Width = 720;
-                        shape.Height = 380;
+                        shape.Width = Convert.ToDouble(model.Images[i].ImageWidth);
+                        shape.Height = Convert.ToDouble(model.Images[i].ImageHeight);
                     }
 
                     WordManage.BookMarkReplace(enclosurelDocument, builder, "Image" + (i + 1) + "_Name", model.Images[i].ImageName);
@@ -196,11 +206,11 @@ namespace Tunnel.Word.BuildWord.Month
             }
 
 
-            _word.Document.AppendDocument(enclosurelDocument, ImportFormatMode.UseDestinationStyles);
+            //_word.Document.AppendDocument(enclosurelDocument, ImportFormatMode.UseDestinationStyles);
 
             _word.Document.UpdateFields();
 
-            _coverCount += enclosurelDocument.PageCount;
+            //_coverCount += enclosurelDocument.PageCount;
         }
 
         private Stream GetSroce(string url)

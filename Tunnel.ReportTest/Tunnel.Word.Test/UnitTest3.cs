@@ -83,6 +83,7 @@ namespace Tunnel.Word.Test
                 ErchenDefectDesc = "本次检测K1+448.5～K1+600段测线范围内未发现明显缺陷",
                 ErchenSpaceDesc = "老营特长隧道右幅进口K1+448.5～K1+600段衬砌钢筋主筋间距检测结果见表8",
                 FujianName = "附图1各测线实测厚度剖面图",
+                FujianImage1 = Path.Combine(System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Files", "侧线图.png"),
                 ErchenParamsTable1 = new List<IListModel>
                 {
                     new ErchenParamsModel
@@ -178,74 +179,153 @@ namespace Tunnel.Word.Test
                     new ErchenThicknessModel
                     {
                         TableName = "表6 混凝土衬砌厚度实测结果统计表",
-                        ShotcreteThickness = "30",
-                        MaxThickness = "45",
-                        MinThickness = "15",
-                        AverageThickness = "30",
-                        GoodPercent = "99.99%",
-                        BottomText = "每条测线平均厚度",
-                        ErchenThicknessDatas = new List<ErchenThicknessDataModel>
+                        ErchenDataList = new List<ErchenDataListModel>()
                         {
-                            new ErchenThicknessDataModel
+                            new ErchenDataListModel()
                             {
-                                Index = "1",
-                                ParamsMileage = "K11-K22",
-                                RealThicknessG = "10",
-                                RealThicknessE = "10",
-                                RealThicknessC = "10",
-                                RealThicknessA = "10",
-                                RealThicknessB = "10",
-                                RealThicknessD = "10",
-                                RealThicknessF = "10",
+                                ShotcreteThickness = "30",
+                                MaxThickness = "45",
+                                MinThickness = "15",
+                                AverageThickness = "30",
+                                GoodPercent = "99.99%",
+                                BottomText = "每条测线平均厚度",
+                                ErchenThicknessDatas = new List<ErchenThicknessDataModel>
+                                {
+                                    new ErchenThicknessDataModel
+                                    {
+                                        Index = "1",
+                                        ParamsMileage = "K11-K22",
+                                        RealThicknessG = "10",
+                                        RealThicknessE = "10",
+                                        RealThicknessC = "10",
+                                        RealThicknessA = "10",
+                                        RealThicknessB = "10",
+                                        RealThicknessD = "10",
+                                        RealThicknessF = "10",
+                                    },
+                                    new ErchenThicknessDataModel
+                                    {
+                                        Index = "2",
+                                        ParamsMileage = "K11-K22",
+                                        RealThicknessG = "10",
+                                        RealThicknessE = "10",
+                                        RealThicknessC = "10",
+                                        RealThicknessA = "10",
+                                        RealThicknessB = "10",
+                                        RealThicknessD = "10",
+                                        RealThicknessF = "10",
+                                    },
+                                    new ErchenThicknessDataModel
+                                    {
+                                        Index = "3",
+                                        ParamsMileage = "K11-K22",
+                                        RealThicknessG = "10",
+                                        RealThicknessE = "10",
+                                        RealThicknessC = "10",
+                                        RealThicknessA = "10",
+                                        RealThicknessB = "10",
+                                        RealThicknessD = "10",
+                                        RealThicknessF = "10",
+                                    },
+                                    new ErchenThicknessDataModel
+                                    {
+                                        Index = "4",
+                                        ParamsMileage = "K11-K22",
+                                        RealThicknessG = "10",
+                                        RealThicknessE = "10",
+                                        RealThicknessC = "10",
+                                        RealThicknessA = "10",
+                                        RealThicknessB = "10",
+                                        RealThicknessD = "10",
+                                        RealThicknessF = "10",
+                                    }
+                                },
+                                ErchenThicknessAveDatas = new List<ErchenThicknessAveDataModel>
+                                {
+                                    new ErchenThicknessAveDataModel
+                                    {
+                                        RealThicknessG = "5",
+                                        RealThicknessE = "5",
+                                        RealThicknessC = "5",
+                                        RealThicknessA = "5",
+                                        RealThicknessB = "5",
+                                        RealThicknessD = "5",
+                                        RealThicknessF = "5",
+                                    }
+                                }
                             },
-                            new ErchenThicknessDataModel
+                            new ErchenDataListModel()
                             {
-                                Index = "2",
-                                ParamsMileage = "K11-K22",
-                                RealThicknessG = "10",
-                                RealThicknessE = "10",
-                                RealThicknessC = "10",
-                                RealThicknessA = "10",
-                                RealThicknessB = "10",
-                                RealThicknessD = "10",
-                                RealThicknessF = "10",
-                            },
-                            new ErchenThicknessDataModel
-                            {
-                                Index = "3",
-                                ParamsMileage = "K11-K22",
-                                RealThicknessG = "10",
-                                RealThicknessE = "10",
-                                RealThicknessC = "10",
-                                RealThicknessA = "10",
-                                RealThicknessB = "10",
-                                RealThicknessD = "10",
-                                RealThicknessF = "10",
-                            },
-                            new ErchenThicknessDataModel
-                            {
-                                Index = "4",
-                                ParamsMileage = "K11-K22",
-                                RealThicknessG = "10",
-                                RealThicknessE = "10",
-                                RealThicknessC = "10",
-                                RealThicknessA = "10",
-                                RealThicknessB = "10",
-                                RealThicknessD = "10",
-                                RealThicknessF = "10",
-                            }
-                        },
-                        ErchenThicknessAveDatas = new List<ErchenThicknessAveDataModel>
-                        {
-                            new ErchenThicknessAveDataModel
-                            {
-                                RealThicknessG = "5",
-                                RealThicknessE = "5",
-                                RealThicknessC = "5",
-                                RealThicknessA = "5",
-                                RealThicknessB = "5",
-                                RealThicknessD = "5",
-                                RealThicknessF = "5",
+                                ShotcreteThickness = "30",
+                                MaxThickness = "45",
+                                MinThickness = "15",
+                                AverageThickness = "30",
+                                GoodPercent = "99.89%",
+                                BottomText = "每条测线平均厚度",
+                                ErchenThicknessDatas = new List<ErchenThicknessDataModel>
+                                {
+                                    new ErchenThicknessDataModel
+                                    {
+                                        Index = "1",
+                                        ParamsMileage = "K11-K22",
+                                        RealThicknessG = "10",
+                                        RealThicknessE = "10",
+                                        RealThicknessC = "10",
+                                        RealThicknessA = "10",
+                                        RealThicknessB = "10",
+                                        RealThicknessD = "10",
+                                        RealThicknessF = "10",
+                                    },
+                                    new ErchenThicknessDataModel
+                                    {
+                                        Index = "2",
+                                        ParamsMileage = "K11-K22",
+                                        RealThicknessG = "10",
+                                        RealThicknessE = "10",
+                                        RealThicknessC = "10",
+                                        RealThicknessA = "10",
+                                        RealThicknessB = "10",
+                                        RealThicknessD = "10",
+                                        RealThicknessF = "10",
+                                    },
+                                    new ErchenThicknessDataModel
+                                    {
+                                        Index = "3",
+                                        ParamsMileage = "K11-K22",
+                                        RealThicknessG = "10",
+                                        RealThicknessE = "10",
+                                        RealThicknessC = "10",
+                                        RealThicknessA = "10",
+                                        RealThicknessB = "10",
+                                        RealThicknessD = "10",
+                                        RealThicknessF = "10",
+                                    },
+                                    new ErchenThicknessDataModel
+                                    {
+                                        Index = "4",
+                                        ParamsMileage = "K11-K22",
+                                        RealThicknessG = "10",
+                                        RealThicknessE = "10",
+                                        RealThicknessC = "10",
+                                        RealThicknessA = "10",
+                                        RealThicknessB = "10",
+                                        RealThicknessD = "10",
+                                        RealThicknessF = "10",
+                                    }
+                                },
+                                ErchenThicknessAveDatas = new List<ErchenThicknessAveDataModel>
+                                {
+                                    new ErchenThicknessAveDataModel
+                                    {
+                                        RealThicknessG = "5",
+                                        RealThicknessE = "5",
+                                        RealThicknessC = "5",
+                                        RealThicknessA = "5",
+                                        RealThicknessB = "5",
+                                        RealThicknessD = "5",
+                                        RealThicknessF = "5",
+                                    }
+                                }
                             }
                         }
                     }
@@ -296,18 +376,30 @@ namespace Tunnel.Word.Test
                 //        }
                 //    }
                 //},
-                //Conclusion ="根据监控量测数据结果分析判断：\r\n"+
-                //"  1)老营特长隧道左幅进口，ZK1+558～ZK1+594段各监测断面变形速度及累计变形值较小，累计变形值U0＜Un／3，各断面已基本稳定，可进行下道工序施工；ZK1+610、ZK1+623两个监测断面变形速度及累计变形值较小，累计变形值U0＜Un／3，由于时态曲线呈缓慢上升趋势，需继续监测。\r\n"+
-                //"  2)老营特长隧道右幅进口, K1+466～K1+540段各监测断面变形速度及累计变形值较小，累计变形值U0＜Un／3，各断面已基本稳定，可下道工序施工； K1+556监测断面变形速度及累计变形值较小，累计变形值U0＜Un／3，由于时态曲线呈缓慢上升趋势，需继续监测。\r\n"+
-                //"  3)老营特长隧道左幅进口地表下沉ZK1+550各监测点变形速度及累计变形值变化较小，各测点已趋于稳定。\r\n"+
-                //"  4) 老营特长隧道右幅进口地表下沉K1+470各监测点变形速度及累计变形值变化较小，各测点已趋于稳定。",
                 ErchenThicknessConclusion = "老营特长隧道右幅进口K1+448.5～K1+600段检查点数的98.7%大于设计厚度，检测结果满足设计和规范要求，评定为合格。",
                 ErchenDefectConclusion = "检测结果显示，本次检测老营特长隧道右幅进口K1+448.5～K1+600段测线范围内未发现明显缺陷，评定为合格。",
                 ErchenSpaceConclusion = "老营特长隧道右幅进口K1+448.5～K1+460段衬砌钢筋主筋间距设计值20cm，实测最大值20.8cm，最小值19cm，平均值19.8cm；K1+460～K1+490段衬砌钢筋主筋间距设计值20cm，实测最大值23cm，最小值18cm，平均值20.1m；K1+490～K1+550段衬砌钢筋主筋间距设计值20cm，实测最大值24cm，最小值19cm，平均值20.4cm；K1+550～K1+600段衬砌钢筋主筋间距设计值20cm，实测最大值24cm，最小值19cm，平均值20.5m，检测结果满足设计和规范要求，评定为合格。",
-                //Proposal = "  1)建议施工时采用“短进尺、弱爆破、及时支护、勤量测、快循环”的施工原则，严格按照设计要求及施工规范施工，以确保隧道施工安全；\r\n"+
-                //"  2)严格控制超前导管注浆质量，做到各施工工序衔接及时，严格控制系统锚杆及锁脚锚杆施工质量；\r\n"+
-                //"  3) 施工过程中注意对监控测点的保护，确保监控量测数据的延续性，保证测量结果的有效性。"
             });
+
+            //monthService.SetEnclosureModel(new List<ErchenFujianModel>()
+            //{
+            //    new ErchenFujianModel()
+            //    {
+            //        FujianHeaderName = "附图1 各测线实测厚度剖面图",
+            //        Type = EnclosureType.ErChenImageList,
+            //        ImageUrl = Path.Combine(System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase,"Files","侧线图.png"),
+            //        //Images = new List<ErchenImageModel>()
+            //        //{
+            //        //    new ErchenImageModel()
+            //        //    {
+            //        //        ImageName = "",
+            //        //        ImageUrl = Path.Combine(System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase,"Files","侧线图.png"),
+            //        //        ImageWidth = "500",
+            //        //        ImageHeight = "200"
+            //        //    }
+            //        //}
+            //    }
+            //});
 
             //monthService.SetEnclosureModel(new List<EnclosureModel>()
             //{

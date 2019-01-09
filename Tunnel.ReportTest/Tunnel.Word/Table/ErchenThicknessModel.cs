@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Tunnel.Word.Table
 {
     /// <summary>
-    /// 初支厚度表
+    /// 二衬厚度表
     /// </summary>
     public class ErchenThicknessModel : TableDataModel
     {
@@ -15,6 +15,13 @@ namespace Tunnel.Word.Table
         /// 初支厚度表
         /// </summary>
         public ErchenThicknessModel() { }
+        // 列表数据
+        public List<ErchenDataListModel> ErchenDataList { get; set; }
+        
+    }
+
+    public class ErchenDataListModel
+    {
         // 混凝土喷射厚度
         public string ShotcreteThickness { get; set; }
         // 最大厚度

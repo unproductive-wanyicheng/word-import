@@ -55,7 +55,7 @@ namespace Tunnel.Word.Test
         [TestMethod]
         public void TestTunnelMonth()
         {
-            TunnelMonthService monthService = new TunnelMonthService();
+            ChuzhiService monthService = new ChuzhiService();
             String time = DateTime.Now.ToString("yyyy年MM月dd日");
             monthService.SetCoverModel(new CoverModel()
             {

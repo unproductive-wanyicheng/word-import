@@ -11,6 +11,6 @@ namespace Tunnel.Word.Enums
         Image = 1,
         Table = 2,
         ChuzhiImage = 3,
-        ErChenImage = 4
+        ErChenImageList = 4
     }
 }

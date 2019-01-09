@@ -59,8 +59,11 @@
     <Compile Include="BuildWord\MonitorMonth\CoverModel.cs" />
     <Compile Include="BuildWord\MonitorMonth\EnclosureModel.cs" />
     <Compile Include="BuildWord\MonitorMonth\TunnelMonitorService.cs" />
+    <Compile Include="BuildWord\Month\ChuzhiService.cs" />
+    <Compile Include="BuildWord\Month\ErchenFujianModel.cs" />
     <Compile Include="BuildWord\Month\ErchenService.cs" />
     <Compile Include="Enums\Enum.cs" />
+    <Compile Include="Model\ErchenImageModel.cs" />
     <Compile Include="Model\IModel.cs" />
     <Compile Include="IMonitoringResult.cs" />
     <Compile Include="Model\ImageModel.cs" />

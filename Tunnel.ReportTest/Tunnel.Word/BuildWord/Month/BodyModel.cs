@@ -66,6 +66,9 @@ namespace Tunnel.Word.BuildWord.Month
         /// </summary>
         [WordMark(MarkName = "附件名字1")]
         public string FujianName { get; set; }
+
+        [WordMark(MarkName = "Image1", MarkType = MarkType.Image)]
+        public string FujianImage1 { get; set; }
         /// <summary>
         /// T06_监测结果 选测项目
         /// </summary>
