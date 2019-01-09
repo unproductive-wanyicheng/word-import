@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tunnel.Word.Test;
+using System.IO;
+
 
 namespace WindowsFormsApplication1
 {
@@ -20,9 +22,11 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            UnitTest3 test = new UnitTest3();
+            UnitTest4 test = new UnitTest4();
             //UnitTest2 test = new UnitTest2();
-            test.TestTunnelMonth();
+            //test.TestTunnelMonth();
+            test.test();
+            
         }
     }
 }
