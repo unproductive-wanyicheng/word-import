@@ -47,8 +47,6 @@ C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\WindowsFormsAp
 D:\CODE\word-import\Tunnel.ReportTest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
 D:\CODE\word-import\Tunnel.ReportTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 D:\CODE\word-import\Tunnel.ReportTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
-D:\CODE\word-import\Tunnel.ReportTest\WindowsFormsApplication1\bin\Debug\TunnelMonthFiles\log.png
-D:\CODE\word-import\Tunnel.ReportTest\WindowsFormsApplication1\bin\Debug\TunnelMonthFiles\注意事项.docx
 D:\CODE\word-import\Tunnel.ReportTest\WindowsFormsApplication1\bin\Debug\Files\图片1.png
 D:\CODE\word-import\Tunnel.ReportTest\WindowsFormsApplication1\bin\Debug\Files\地质素描图.png
 D:\CODE\word-import\Tunnel.ReportTest\WindowsFormsApplication1\bin\Debug\Files\掌子面照片.png
