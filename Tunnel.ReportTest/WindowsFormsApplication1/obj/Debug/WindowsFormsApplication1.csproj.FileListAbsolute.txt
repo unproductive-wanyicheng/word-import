@@ -69,5 +69,3 @@ D:\CODE\word-import\Tunnel.ReportTest\WindowsFormsApplication1\obj\Debug\Windows
 D:\CODE\word-import\Tunnel.ReportTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
 D:\CODE\word-import\Tunnel.ReportTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 D:\CODE\word-import\Tunnel.ReportTest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
-C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\WindowsFormsApplication1\bin\Debug\TunnelMonthFiles\log.png
-C:\Users\shiss\Desktop\my-data\Code\word-import\Tunnel.ReportTest\WindowsFormsApplication1\bin\Debug\TunnelMonthFiles\注意事项.docx

@@ -29,7 +29,7 @@ namespace Tunnel.Word.BuildWord.Month
         public Document BuildWord()
         {
             _word = new WordManage();
-            _word.Open(GetSroce("Tunnel.Word.ErchenFiles.二衬封面.doc"));
+            _word.Open(GetSroce("Tunnel.Word.TunnelMonthFiles.封面.docx"));
 
             BuildCover();
             AddBodyAndSetData();
@@ -74,8 +74,7 @@ namespace Tunnel.Word.BuildWord.Month
 
         private void AddBodyAndSetData()
         {
-            var jklcDocument = new Aspose.Words.Document(GetSroce("Tunnel.Word.ErchenFiles.二衬正文.doc"));
-            //var jklcDocument = new Aspose.Words.Document(GetSroce("Tunnel.Word.TunnelMonthFiles.监控量测.docx"));
+            var jklcDocument = new Aspose.Words.Document(GetSroce("Tunnel.Word.TunnelMonthFiles.监控量测.docx"));
             var builder = new DocumentBuilder(jklcDocument);
             if (this._bodyModel!=null)
                 WordManage.SetModel(this._bodyModel, jklcDocument, builder);
@@ -87,7 +86,6 @@ namespace Tunnel.Word.BuildWord.Month
             SetEnclosure();
             builder.MoveToHeaderFooter(HeaderFooterType.FooterPrimary);
             WordManage.BookMarkReplace(_word.Document, builder, "totalPage", _coverCount.ToString());
-            WordManage.BookMarkReplace(_word.Document, builder, "totalPage1", _coverCount.ToString());
         }
 
         /// <summary>

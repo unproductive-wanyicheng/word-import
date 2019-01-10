@@ -466,18 +466,22 @@ namespace Tunnel.Word
                                 bm.Text = "";
                                 if (value is string)
                                 {
-                                    shape =builder.InsertImage(value.ToString());
+                                    //Console.WriteLine("String");
+                                    shape = builder.InsertImage(value.ToString());
                                 }
                                 else if (value is Stream)
                                 {
+                                    //Console.WriteLine("stream");
                                     shape = builder.InsertImage(value as Stream);
                                 }
                                 else if (value is Image)
                                 {
+                                    //Console.WriteLine("Image");
                                     shape = builder.InsertImage(value as Image);
                                 }
                                 else if (value is byte[])
                                 {
+                                    //Console.WriteLine("Byte");
                                     shape = builder.InsertImage((byte[])value);
                                 }
 

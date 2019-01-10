@@ -26,9 +26,32 @@ namespace Tunnel.Word.Test
             Document doc = new Document(fileName);
             var marksList = doc.Range.Bookmarks;
             var pageHeader = marksList["Image1"];
+            
+            Node next = pageHeader.BookmarkStart.NextSibling;
+            Console.WriteLine(next.GetType());
+
+            Shape shape = next as Shape;
+            var savePath = AppDomain.CurrentDomain.BaseDirectory;
+            string time = DateTime.Now.ToString("HHmmssfff");
+            //扩展名
+            string ex = FileFormatUtil.ImageTypeToExtension(shape.ImageData.ImageType);
+            //文件名
+            string filename = savePath + "\\images";
+            if (!Directory.Exists(filename)) //如果该文件夹不存在就建立这个新文件夹
+            {
+                Directory.CreateDirectory(filename);
+            }
+            else
+            {
+                Directory.Delete(filename, true);
+                Directory.CreateDirectory(filename);
+            }
+            string file_Name = string.Format("{0}_{1}{2}", time, 0, ex);
+            shape.ImageData.Save(Path.Combine(filename + "\\", file_Name));
+
             //Console.WriteLine(pageHeader.GetType());
             //var text = pageHeader.Text;
-            Console.WriteLine(pageHeader.Name);
+            //Console.WriteLine(pageHeader.Text);
 
             var table0 = doc.GetChildNodes(NodeType.Table, true)[5] as Aspose.Words.Tables.Table;
             
@@ -48,8 +71,17 @@ namespace Tunnel.Word.Test
             //        //扩展名
             //        string ex = FileFormatUtil.ImageTypeToExtension(shape.ImageData.ImageType);
             //        //文件名
+            //        string filename = savePath + "\\images";
+            //        if (!Directory.Exists(filename)) //如果该文件夹不存在就建立这个新文件夹
+            //        {
+            //            Directory.CreateDirectory(filename);
+            //        }else
+            //        {
+            //            Directory.Delete(filename, true);
+            //            Directory.CreateDirectory(filename);
+            //        }
             //        string file_Name = string.Format("{0}_{1}{2}", time, imageIndex, ex);
-            //        shape.ImageData.Save(savePath + file_Name);
+            //        shape.ImageData.Save(Path.Combine(filename + "\\", file_Name));
             //        //添加文件到集合
             //        list.Add(file_Name);
             //        imageIndex++;
